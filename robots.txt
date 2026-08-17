@@ -1,0 +1,5 @@
+# Update sitemap URL with your domain before production.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.universalpublicworks.com/sitemap.xml

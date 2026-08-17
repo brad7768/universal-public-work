@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UPUW</title>
+    <meta
+      name="description"
+      content="UPUW — accès au site en français ou en anglais selon votre navigateur."
+    />
+    <link rel="canonical" href="https://www.universalpublicworks.com/" />
+    <link rel="alternate" hreflang="fr" href="https://www.universalpublicworks.com/fr/" />
+    <link rel="alternate" hreflang="en" href="https://www.universalpublicworks.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.universalpublicworks.com/fr/" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#fafafa" />
+    <script>
+      (function () {
+        var KEY = "upuw-lang";
+        var PATH = { fr: "/fr/", en: "/en/" };
+        function go(code) {
+          try {
+            location.replace(PATH[code]);
+          } catch (e) {
+            location.href = PATH[code];
+          }
+        }
+        try {
+          var q = new URLSearchParams(location.search || "").get("lang");
+          if (q === "fr" || q === "en") {
+            localStorage.setItem(KEY, q);
+            go(q);
+            return;
+          }
+          var saved = localStorage.getItem(KEY);
+          if (saved === "fr" || saved === "en") {
+            go(saved);
+            return;
+          }
+        } catch (e) {}
+        var list = [];
+        if (navigator.languages && navigator.languages.length) {
+          list = navigator.languages.slice();
+        } else if (navigator.language) {
+          list = [navigator.language];
+        }
+        var pick = "fr";
+        for (var i = 0; i < list.length; i++) {
+          var raw = (list[i] || "").toLowerCase();
+          if (!raw) continue;
+          if (raw.indexOf("en") === 0) {
+            pick = "en";
+            break;
+          }
+          if (raw.indexOf("fr") === 0) {
+            pick = "fr";
+            break;
+          }
+        }
+        go(pick);
+      })();
+    </script>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #fafafa;
+        color: #52525b;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 0.9rem;
+      }
+      a {
+        color: #ea580c;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Chargement… <span lang="en">Loading…</span></p>
+    <noscript>
+      <p>
+        Activez JavaScript ou choisissez une langue :
+        <a href="/fr/">Français</a>
+        ·
+        <a href="/en/">English</a>
+      </p>
+    </noscript>
+  </body>
+</html>
