@@ -1,8 +1,11 @@
-# Static site — HTML/CSS/JS at repo root (fr/ + en/ committed; no CI build).
-# Regenerate pages locally: npm run build (optional dev sync).
+# Static site — `npm run build` regenerates fr/ + en/ from src/ + data/ before publish.
 
 [build]
+  command = "npm run build"
   publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
 
 [dev]
   publish = "."

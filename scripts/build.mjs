@@ -1,12 +1,52 @@
 #!/usr/bin/env node
+/**
+ * UPUW static site generator ("CMS" workflow)
+ *
+ * Edit content:
+ *   - Page bodies:     src/pages/{fr,en}/*.html  (placeholders: <!-- @products -->, @stats, etc.)
+ *   - Shared chrome:   this file (renderHeader / renderFooter)
+ *   - Navigation/CTA:  data/nav.{fr,en}.json
+ *   - Site contact:    data/site.json
+ *   - Lists/catalog:   data/products|projects|services|faq.{fr,en}.json
+ *   - Page registry:   src/pages-manifest.json
+ *
+ * After any JSON or src/ change, run:  npm run build
+ * Output (committed + Netlify publish root): fr/, en/, sitemap.xml, _redirects
+ *
+ * Official logo upload at repo root is synced into assets/brand/upuw-logo.jpg on each build.
+ */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import crypto from "node:crypto";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const DIST = path.join(ROOT, "dist");
 const LOGO = "../assets/brand/upuw-logo.jpg";
+const LOGO_WIDTH = 204;
+const LOGO_HEIGHT = 102;
+const FOOTER_LOGO_WIDTH = 168;
+const FOOTER_LOGO_HEIGHT = 84;
+
+function syncBrandLogo() {
+  const rootUpload = path.join(ROOT, "logo upuw fond blanc.jpg");
+  const brandDir = path.join(ROOT, "assets/brand");
+  const brandFile = path.join(brandDir, "upuw-logo.jpg");
+  if (!fs.existsSync(rootUpload)) return;
+  fs.mkdirSync(brandDir, { recursive: true });
+  const rootBuf = fs.readFileSync(rootUpload);
+  let destBuf = null;
+  if (fs.existsSync(brandFile)) destBuf = fs.readFileSync(brandFile);
+  const rootHash = crypto.createHash("md5").update(rootBuf).digest("hex");
+  const destHash = destBuf ? crypto.createHash("md5").update(destBuf).digest("hex") : "";
+  if (rootHash !== destHash) {
+    fs.writeFileSync(brandFile, rootBuf);
+    console.log("Synced logo → assets/brand/upuw-logo.jpg");
+  }
+}
+
+syncBrandLogo();
 
 const site = JSON.parse(fs.readFileSync(path.join(ROOT, "data/site.json"), "utf8"));
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "src/pages-manifest.json"), "utf8"));
@@ -114,6 +154,9 @@ function renderHeader(lang, meta, nav) {
       ? "Universal Public Works — logo officiel"
       : "Universal Public Works — official logo";
 
+  const headerLogo = `<img src="${LOGO}" width="${LOGO_WIDTH}" height="${LOGO_HEIGHT}" alt="${logoAlt}" decoding="async" />`;
+  const footerLogo = `<img src="${LOGO}" width="${FOOTER_LOGO_WIDTH}" height="${FOOTER_LOGO_HEIGHT}" alt="${logoAlt}" decoding="async" />`;
+
   return {
     header: `<div class="top-bar">
         <div class="container top-bar-inner">
@@ -148,7 +191,7 @@ function renderHeader(lang, meta, nav) {
         <div class="header-tier1">
           <div class="container header-inner">
             <a href="index.html" class="logo">
-              <img src="../assets/brand/upuw-logo.jpg" width="160" height="80" alt="${logoAlt}" />
+              ${headerLogo}
             </a>
             <nav class="nav-desktop" aria-label="${lang === "fr" ? "Navigation principale" : "Main navigation"}">
               ${primary}
@@ -189,7 +232,7 @@ function renderHeader(lang, meta, nav) {
         <div class="container footer-grid">
           <div class="footer-col footer-brand">
             <a href="index.html" class="footer-logo">
-              <img src="../assets/brand/upuw-logo.jpg" width="140" height="70" alt="${logoAlt}" />
+              ${footerLogo}
             </a>
             <p class="footer-tagline">${escapeHtml(nav.footer.tagline)}</p>
             <p class="footer-desc">${escapeHtml(nav.footer.description || "")}</p>
