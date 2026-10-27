@@ -1,0 +1,47 @@
+{
+  "intro": "Réponses indicatives — contenu juridique et opérationnel à valider avec UPUW (éléments marqués TBD).",
+  "categories": [
+    {
+      "id": "devis",
+      "title": "Devis & commandes",
+      "items": [
+        {
+          "q": "Comment demander un devis ?",
+          "a": "Utilisez le formulaire Demander un devis ou WhatsApp (+237 659 432 516). Pour un produit du catalogue, ouvrez la fiche produit puis « Demander un devis » (identifiant produit transmis automatiquement)."
+        },
+        {
+          "q": "Les prix affichés sont-ils fermes ?",
+          "a": "Non — tout est « sur devis ». Tarifs, taxes et frais de livraison à confirmer par écrit (TBD processus commercial)."
+        }
+      ]
+    },
+    {
+      "id": "delais",
+      "title": "Délais & planning",
+      "items": [
+        {
+          "q": "Quels délais pour un chantier type ?",
+          "a": "Dépend du périmètre et des autorisations. Calendrier indicatif établi après étude — délais type à documenter (TBD)."
+        },
+        {
+          "q": "Approvisionnement équipement ?",
+          "a": "Délais constructeur et logistique import à confirmer produit par produit (TBD)."
+        }
+      ]
+    },
+    {
+      "id": "zone",
+      "title": "Zone d’intervention",
+      "items": [
+        {
+          "q": "Où intervenez-vous ?",
+          "a": "Yaoundé et région de la capitale nationale — extension géographique à confirmer avec le client (TBD)."
+        },
+        {
+          "q": "Les réalisations du site sont-elles toutes vérifiées ?",
+          "a": "Non. Les fiches marquées « Exemple » ou « Illustration » ne sont pas des références certifiées tant que le client ne les a pas validées."
+        }
+      ]
+    }
+  ]
+}

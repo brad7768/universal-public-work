@@ -1,0 +1,75 @@
+{
+  "catalogIntro": "Catalogue indicatif — tarifs sur devis, disponibilité et fiches constructeur à valider avec l’équipe UPUW.",
+  "products": [
+    {
+      "id": "survey",
+      "name": "Stations totales",
+      "description": "Instruments de géodésie de précision avec formation terrain et garantie constructeur supervisée.",
+      "longDescription": "Gamme d’instruments topographiques pour levés classiques et implantation. Configuration exacte, marques et délais d’approvisionnement à confirmer au devis (TBD).",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--survey",
+      "cta": "Demander un devis",
+      "specs": [
+        { "label": "Usage", "value": "Topographie / implantation (TBD modèle)" },
+        { "label": "Formation", "value": "Option terrain — contenu TBD" },
+        { "label": "Garantie", "value": "Selon constructeur — TBD" }
+      ]
+    },
+    {
+      "id": "drone",
+      "name": "Drones d’inspection",
+      "description": "Profils topo, inspections d’actifs critiques et diffusion cloud sécurisée pour décision rapide.",
+      "longDescription": "Plateformes aériennes pour missions d’inspection et modèles numériques. Périmètre réglementaire camerounais et opérateurs certifiés à confirmer (TBD).",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--drone",
+      "cta": "Étude de besoin",
+      "specs": [
+        { "label": "Capteurs", "value": "Configuration TBD" },
+        { "label": "Livrables", "value": "Orthophoto / MNT — selon mission" },
+        { "label": "Support", "value": "UPUW + partenaires TBD" }
+      ]
+    },
+    {
+      "id": "mixer",
+      "name": "Bétonnières industrielles",
+      "description": "Capacités haute cadence avec options automatisées pour projets autoroutiers ou barrages.",
+      "longDescription": "Équipements de production béton pour chantiers lourds. Capacité nominale et logistique de livraison à cadrer par projet (TBD).",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--mixer",
+      "cta": "Planifier la logistique",
+      "specs": [
+        { "label": "Capacité", "value": "TBD selon lot" },
+        { "label": "Automatisation", "value": "Options TBD" },
+        { "label": "Maintenance", "value": "Contrat TBD" }
+      ]
+    },
+    {
+      "id": "blocks",
+      "name": "Parpaings lourds",
+      "description": "Gammes résistantes pour charges verticales et ouvrages antisismiques lorsque spécifié.",
+      "longDescription": "Blocs structuraux pour gros œuvre. Classes de résistance et normes applicables à valider avec le bureau d’études (TBD).",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--blocks",
+      "cta": "Fiche technique",
+      "specs": [
+        { "label": "Formats", "value": "Catalogue TBD" },
+        { "label": "Charges", "value": "Selon spécification projet" },
+        { "label": "Logistique", "value": "Palettisation TBD" }
+      ]
+    },
+    {
+      "id": "industrial",
+      "name": "Briques réfractaires",
+      "description": "Matériaux thermiquement résistants pour infrastructures industrielles et haute température.",
+      "longDescription": "Matériaux pour fours et ouvrages industriels. Courbes de température et certifications à documenter (TBD).",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--industrial",
+      "cta": "Configurer un lot",
+      "specs": [
+        { "label": "Température", "value": "Gamme TBD" },
+        { "label": "Application", "value": "Industriel / haute température" },
+        { "label": "Conditionnement", "value": "Lot TBD" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "universal-public-work",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check-links": "node scripts/check-links.mjs",
+    "smoke": "node scripts/smoke-pages.mjs"
+  }
+}

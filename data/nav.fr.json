@@ -1,0 +1,30 @@
+{
+  "skipLink": "Aller au contenu principal",
+  "primary": [
+    { "id": "home", "label": "Accueil", "href": "index.html" },
+    { "id": "construction", "label": "Construction", "href": "construction.html" },
+    { "id": "realisations", "label": "Réalisations", "href": "realisations.html" },
+    { "id": "equipement", "label": "Équipement", "href": "equipement.html" },
+    { "id": "about", "label": "À propos", "href": "a-propos.html" },
+    { "id": "contact", "label": "Contact", "href": "contact.html" }
+  ],
+  "secondaryLabel": "Expertises",
+  "secondary": [
+    { "id": "ingenierie", "label": "Ingénierie & plans", "href": "etudes-topographie.html#ingenierie" },
+    { "id": "topographie", "label": "Topographie", "href": "etudes-topographie.html#topographie" },
+    { "id": "expertise", "label": "Expertise", "href": "construction.html#expertise" }
+  ],
+  "cta": { "label": "Demander un devis", "href": "devis.html" },
+  "footer": {
+    "tagline": "Précision architecturale, fiabilité mondiale.",
+    "legal": [
+      { "label": "FAQ", "href": "faq.html" },
+      { "label": "Confidentialité", "href": "confidentialite.html" },
+      { "label": "Mentions légales", "href": "mentions-legales.html" },
+      { "label": "Politiques", "href": "politiques.html" }
+    ],
+    "credit": "by edgewebz"
+  },
+  "mobileMenuLabel": "Ouvrir le menu",
+  "langLabel": "Choisir la langue"
+}

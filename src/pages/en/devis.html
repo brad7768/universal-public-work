@@ -1,0 +1,72 @@
+
+        <section class="hero hero--page hero--devis hero--cinematic">
+          <div class="container hero-inner hero-inner--left">
+            <p class="hero-badge">Quote request</p>
+            <h1 class="hero-title-brand">
+              Your project,<br />
+              <span class="text-accent">our expertise</span>
+            </h1>
+            <p class="lead hero-sub--light">Structured form — Netlify Forms registration required in production.</p>
+          </div>
+        </section>
+
+        <!-- @breadcrumbs:Request a quote -->
+
+        <section class="section" style="padding-top: 0">
+          <div class="container">
+            <div class="devis-panel reveal">
+              <form id="devis-form" name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-lang="en" novalidate>
+                <input type="hidden" name="form-name" value="quote-request" />
+                <input type="hidden" name="page" value="/en/devis.html" />
+                <p class="sr-only" aria-hidden="true"><label>Leave empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+                <fieldset class="devis-step-panel is-active" data-step="1">
+                  <legend>1. Request type</legend>
+                  <div class="form-row"><label for="qv-type">Type</label>
+                    <select id="qv-type" name="need_type" required>
+                      <option value="" disabled selected>— Select —</option>
+                      <option value="construction">Building construction</option>
+                      <option value="plans">2D / 3D plans</option>
+                      <option value="topo">Surveying &amp; boundaries</option>
+                      <option value="location">Equipment rental</option>
+                      <option value="equipement">Equipment purchase</option>
+                      <option value="autre">Other</option>
+                    </select>
+                  </div>
+                  <input type="hidden" id="qv-product-id" name="product_id" value="" />
+                  <div class="form-row" id="qv-product-row" hidden>
+                    <label for="qv-product">Product</label>
+                    <select id="qv-product" name="product">
+                      <option value="">— Select —</option>
+                      <option value="survey">Total stations</option>
+                      <option value="drone">Inspection drones</option>
+                      <option value="mixer">Industrial mixers</option>
+                      <option value="blocks">Heavy blocks</option>
+                      <option value="industrial">Refractory bricks</option>
+                    </select>
+                  </div>
+                  <button type="button" class="btn btn-primary" data-devis-next>Continue</button>
+                </fieldset>
+                <fieldset class="devis-step-panel" data-step="2" hidden>
+                  <legend>2. Project details</legend>
+                  <div class="form-row"><label for="qv-message">Description</label><textarea id="qv-message" name="message" required rows="5"></textarea></div>
+                  <div class="form-actions-inline">
+                    <button type="button" class="btn btn-outline" data-devis-prev>Back</button>
+                    <button type="button" class="btn btn-primary" data-devis-next>Continue</button>
+                  </div>
+                </fieldset>
+                <fieldset class="devis-step-panel" data-step="3" hidden>
+                  <legend>3. Contact</legend>
+                  <div class="form-row"><label for="qv-name">Name / Company</label><input id="qv-name" name="name" required /></div>
+                  <div class="form-row"><label for="qv-phone">Phone</label><input id="qv-phone" name="phone" type="tel" required /></div>
+                  <label class="checkbox-row"><input type="checkbox" name="consent" value="yes" required /><span>I agree to be contacted (GDPR text TBD).</span></label>
+                  <div class="form-actions-inline">
+                    <button type="button" class="btn btn-outline" data-devis-prev>Back</button>
+                    <button type="submit" class="btn btn-primary" id="devis-submit">Send request →</button>
+                  </div>
+                </fieldset>
+              </form>
+              <div class="form-status" id="devis-form-status" role="status" aria-live="polite" hidden></div>
+              <p class="backend-note"><strong>Backend:</strong> enable « quote-request » in Netlify before treating HTTP OK as delivery proof.</p>
+            </div>
+          </div>
+        </section>

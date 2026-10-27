@@ -1,0 +1,75 @@
+{
+  "catalogIntro": "Indicative catalog — pricing on quote; availability and manufacturer sheets to be confirmed with the UPUW team.",
+  "products": [
+    {
+      "id": "survey",
+      "name": "Total stations",
+      "description": "Precision geodesy instruments with field training and manufacturer warranty oversight.",
+      "longDescription": "Surveying instruments for classic surveys and setting-out. Exact configuration, brands, and lead times to confirm on quote (TBD).",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--survey",
+      "cta": "Request a quote",
+      "specs": [
+        { "label": "Use", "value": "Surveying / setting-out (model TBD)" },
+        { "label": "Training", "value": "Optional field — content TBD" },
+        { "label": "Warranty", "value": "Per manufacturer — TBD" }
+      ]
+    },
+    {
+      "id": "drone",
+      "name": "Inspection drones",
+      "description": "Topo profiles, critical asset inspections, and secure cloud delivery for fast decisions.",
+      "longDescription": "Aerial platforms for inspection missions and digital models. Cameroon regulatory scope and certified operators TBD.",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--drone",
+      "cta": "Needs assessment",
+      "specs": [
+        { "label": "Sensors", "value": "Configuration TBD" },
+        { "label": "Deliverables", "value": "Orthophoto / DTM — per mission" },
+        { "label": "Support", "value": "UPUW + partners TBD" }
+      ]
+    },
+    {
+      "id": "mixer",
+      "name": "Industrial mixers",
+      "description": "High-throughput capacity with automated options for highway or dam projects.",
+      "longDescription": "Concrete production equipment for heavy sites. Nominal capacity and delivery logistics scoped per project (TBD).",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--mixer",
+      "cta": "Plan logistics",
+      "specs": [
+        { "label": "Capacity", "value": "TBD per batch" },
+        { "label": "Automation", "value": "Options TBD" },
+        { "label": "Maintenance", "value": "Contract TBD" }
+      ]
+    },
+    {
+      "id": "blocks",
+      "name": "Heavy blocks",
+      "description": "Ranges rated for vertical loads and seismic applications when specified.",
+      "longDescription": "Structural blocks for structural work. Strength classes and applicable standards to validate with engineering (TBD).",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--blocks",
+      "cta": "Technical sheet",
+      "specs": [
+        { "label": "Formats", "value": "Catalog TBD" },
+        { "label": "Loads", "value": "Per project specification" },
+        { "label": "Logistics", "value": "Palletization TBD" }
+      ]
+    },
+    {
+      "id": "industrial",
+      "name": "Refractory bricks",
+      "description": "Heat-resistant materials for industrial and high-temperature infrastructure.",
+      "longDescription": "Materials for furnaces and industrial works. Temperature curves and certifications to document (TBD).",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--industrial",
+      "cta": "Configure a batch",
+      "specs": [
+        { "label": "Temperature", "value": "Range TBD" },
+        { "label": "Application", "value": "Industrial / high temperature" },
+        { "label": "Packaging", "value": "Batch TBD" }
+      ]
+    }
+  ]
+}
