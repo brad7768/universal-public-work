@@ -1,0 +1,42 @@
+
+        <section class="hero hero--page hero--buy hero--cinematic">
+          <div class="container hero-inner hero-inner--left">
+            <p class="hero-badge">Equipment rental &amp; sales</p>
+            <h1 class="hero-title-brand">
+              Reliable gear<br />
+              <span class="text-accent">for your job sites</span>
+            </h1>
+            <p class="lead hero-sub--light">Every line item is quoted on request and validated by our local team.</p>
+            <div class="hero-ctas hero-ctas--left">
+              <a class="btn btn-primary" href="#commande">Request a quote</a>
+              <a class="btn btn-outline btn-outline--light" href="#catalogue-en">Catalogue</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- @breadcrumbs:Equipment -->
+
+        <section class="section" style="padding-top: 0" aria-labelledby="catalogue-en">
+          <div class="container">
+            <h2 id="catalogue-en" class="section-head reveal">Equipment categories</h2>
+            <div class="product-grid"><!-- @products --></div>
+          </div>
+        </section>
+
+        <section class="container section" id="commande">
+          <div class="procure-panel reveal">
+            <h2>Equipment quote request</h2>
+            <p class="sub">Netlify submission + WhatsApp — no simulated success message.</p>
+            <form id="procure-form" name="procurement" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-lang="en">
+              <input type="hidden" name="form-name" value="procurement" />
+              <input type="hidden" name="page" value="/en/equipement.html" />
+              <p class="sr-only" aria-hidden="true"><label>Leave empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+              <div class="form-row"><label for="pf-name">Name / Company</label><input id="pf-name" name="name" type="text" required /></div>
+              <div class="form-row"><label for="pf-phone">WhatsApp phone</label><input id="pf-phone" name="phone" type="tel" required /></div>
+              <div class="form-row"><label for="pf-product">Product</label><select id="pf-product" name="product" required><option value="" disabled selected>— Select —</option><!-- @product-options --></select></div>
+              <div class="form-row"><label for="pf-qty">Estimated quantity</label><input id="pf-qty" name="qty" type="text" required /></div>
+              <div class="form-row"><label for="pf-note">Notes (optional)</label><textarea id="pf-note" name="note"></textarea></div>
+              <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
+            </form>
+          </div>
+        </section>

@@ -1,0 +1,199 @@
+[
+  {
+    "slug": "index.html",
+    "fr": {
+      "title": "UPUW | Entrepreneur général de choix — Yaoundé & capitale nationale",
+      "description": "UPUW, votre entrepreneur général de choix à Yaoundé et dans la région de la capitale nationale. Travaux publics, bâtiment et équipements. Devis sur WhatsApp (+237 659 432 516).",
+      "activePrimary": "home",
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "UPUW | General contractor of choice — Yaoundé & national capital region",
+      "description": "UPUW, your general contractor of choice in Yaoundé and the national capital region. Public works, building, and equipment. Quotes on WhatsApp (+237 659 432 516).",
+      "activePrimary": "home",
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "a-propos.html",
+    "fr": {
+      "title": "À propos | UPUW — Ingénierie & travaux publics",
+      "description": "Mission, vision et engagements terrain d’UPUW à Yaoundé : sécurité, données et impact local.",
+      "activePrimary": "about",
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "About | UPUW — Engineering & public works",
+      "description": "UPUW mission, vision, and field commitments in Yaoundé: safety, data, and local impact.",
+      "activePrimary": "about",
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "construction.html",
+    "fr": {
+      "title": "Construction | UPUW — Travaux publics & génie civil",
+      "description": "Entrepreneur général : coordination de chantier, gros œuvre et travaux publics dans la région de Yaoundé.",
+      "activePrimary": "construction",
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Construction | UPUW — Public works & civil engineering",
+      "description": "General contractor: site coordination, structural work, and public works in the Yaoundé region.",
+      "activePrimary": "construction",
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "etudes-topographie.html",
+    "fr": {
+      "title": "Études & topographie | UPUW",
+      "description": "Plans 2D/3D, topographie drone, bornage et géomatique pour sécuriser vos projets.",
+      "activePrimary": "etudes",
+      "activeSecondary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Surveys & topography | UPUW",
+      "description": "2D/3D plans, drone surveying, boundary work, and geomatics to de-risk your projects.",
+      "activePrimary": "etudes",
+      "activeSecondary": null,
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "equipement.html",
+    "fr": {
+      "title": "Équipement industriel | UPUW",
+      "description": "Stations totales, drones, bétonnières, parpaings et briques techniques. Devis sur WhatsApp +237 659 432 516.",
+      "activePrimary": "equipement",
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Industrial equipment | UPUW",
+      "description": "Total stations, drones, mixers, blocks, and refractory materials. Quote on WhatsApp +237 659 432 516.",
+      "activePrimary": "equipement",
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "realisations.html",
+    "fr": {
+      "title": "Réalisations | UPUW",
+      "description": "Portfolio chantiers UPUW — projets à documenter avec le client.",
+      "activePrimary": "realisations",
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Projects | UPUW",
+      "description": "UPUW project portfolio — case studies to be documented with the client.",
+      "activePrimary": "realisations",
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "contact.html",
+    "fr": {
+      "title": "Contact | UPUW — Yaoundé",
+      "description": "Coordonnées UPUW : Marché Mendong, Yaoundé. WhatsApp +237 659 432 516.",
+      "activePrimary": "contact",
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Contact | UPUW — Yaoundé",
+      "description": "UPUW contact: Marché Mendong, Yaoundé. WhatsApp +237 659 432 516.",
+      "activePrimary": "contact",
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "devis.html",
+    "fr": {
+      "title": "Demander un devis | UPUW",
+      "description": "Formulaire de demande de devis UPUW — validation client, enregistrement Netlify Forms requis en production.",
+      "activePrimary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Request a quote | UPUW",
+      "description": "UPUW quote request form — client-side validation; Netlify Forms registration required in production.",
+      "activePrimary": null,
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "politiques.html",
+    "fr": {
+      "title": "Politiques | UPUW",
+      "description": "Conditions, procurement et politiques UPUW.",
+      "activePrimary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Policies | UPUW",
+      "description": "UPUW terms, procurement, and site policies.",
+      "activePrimary": null,
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "catalogue-equipements.html",
+    "fr": {
+      "title": "Catalogue d’équipements | UPUW",
+      "description": "Catalogue indicatif stations totales, drones, bétonnières et matériaux — sur devis.",
+      "activePrimary": "equipement",
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Equipment catalog | UPUW",
+      "description": "Indicative catalog of total stations, drones, mixers, and materials — quote on request.",
+      "activePrimary": "equipement",
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "faq.html",
+    "fr": {
+      "title": "FAQ | UPUW",
+      "description": "Questions fréquentes sur devis, délais et zone d’intervention.",
+      "activePrimary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "FAQ | UPUW",
+      "description": "Frequently asked questions about quotes, lead times, and service area.",
+      "activePrimary": null,
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "confidentialite.html",
+    "fr": {
+      "title": "Politique de confidentialité | UPUW",
+      "description": "Traitement des données personnelles — version éditoriale, texte juridique TBD.",
+      "activePrimary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Privacy policy | UPUW",
+      "description": "Personal data processing — editorial version, legal text TBD.",
+      "activePrimary": null,
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "mentions-legales.html",
+    "fr": {
+      "title": "Mentions légales | UPUW",
+      "description": "Informations légales éditoriales — RCCM et identifiants TBD.",
+      "activePrimary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Legal notice | UPUW",
+      "description": "Editorial legal information — trade register and IDs TBD.",
+      "activePrimary": null,
+      "mainId": "main-content"
+    }
+  }
+]

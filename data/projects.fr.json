@@ -1,0 +1,46 @@
+{
+  "disclaimer": "Exemples illustratifs — non vérifiés comme références client. Contenu à remplacer par des dossiers réels fournis par UPUW.",
+  "placeholderNote": "Visuels illustratifs (photos stock du dépôt) — à remplacer par les réalisations client.",
+  "emptyMessage": "Portfolio en cours de publication — photos et fiches projet à fournir par le client.",
+  "projects": [
+    {
+      "id": "voirie-mendong",
+      "title": "Exemple — Voirie quartier Mendong",
+      "summary": "Illustration de réfection de voirie urbaine (données non certifiées).",
+      "sector": "Travaux publics",
+      "year": "TBD",
+      "location": "Yaoundé — périmètre à confirmer",
+      "thumb": "hero-construction.jpg",
+      "hero": "hero-construction.jpg",
+      "scope": "Coordination gros œuvre, réseaux et finitions — périmètre exact à documenter avec le client.",
+      "results": "Résultats quantifiés à fournir (TBD).",
+      "gallery": ["hero-construction.jpg", "about-architecture.jpg"]
+    },
+    {
+      "id": "batiment-admin",
+      "title": "Exemple — Extension bâtiment administratif",
+      "summary": "Illustration de gros œuvre et enveloppe (données non certifiées).",
+      "sector": "Bâtiment",
+      "year": "TBD",
+      "location": "Région capitale — site TBD",
+      "thumb": "about-architecture.jpg",
+      "hero": "about-architecture.jpg",
+      "scope": "Structure, coordination corps d’état et planning phasé — à valider.",
+      "results": "Indicateurs de performance à fournir (TBD).",
+      "gallery": ["about-architecture.jpg", "hero-about-visual.png"]
+    },
+    {
+      "id": "topo-drone",
+      "title": "Exemple — Mission topo drone",
+      "summary": "Illustration de levé aérien et restitution MNT (données non certifiées).",
+      "sector": "Topographie",
+      "year": "TBD",
+      "location": "Zone d’étude TBD",
+      "thumb": "product-drone.jpg",
+      "hero": "product-drone.jpg",
+      "scope": "Acquisition drone, traitement et livrables géomatiques — détail TBD.",
+      "results": "Précision et délais type à documenter (TBD).",
+      "gallery": ["product-drone.jpg", "product-survey.jpg"]
+    }
+  ]
+}

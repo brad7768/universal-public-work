@@ -1,0 +1,80 @@
+{
+  "services": [
+    {
+      "id": "construction",
+      "title": "Construction & travaux publics",
+      "badge": "Pôle 01",
+      "summary": "Entrepreneur général : coordination multi-lots, gros œuvre et respect des protocoles HSE.",
+      "heroClass": "hero--construction",
+      "sections": [
+        {
+          "heading": "Périmètre type",
+          "body": "Routes, bâtiments publics, réseaux et ouvrages de génie civil — typologie à valider avec vos dossiers techniques (TBD)."
+        },
+        {
+          "heading": "Livrables chantier",
+          "body": "Planning d’exécution, reporting terrain, plans de prévention et dossiers de réception selon contrat (TBD détail)."
+        }
+      ],
+      "relatedHref": "construction.html",
+      "relatedLabel": "Vue d’ensemble construction"
+    },
+    {
+      "id": "ingenierie",
+      "title": "Ingénierie & plans",
+      "badge": "Pôle 02",
+      "summary": "Plans 2D/3D, modélisation BIM-ready et dossiers techniques pour sécuriser la mise en œuvre.",
+      "heroClass": "hero--page",
+      "sections": [
+        {
+          "heading": "Livrables",
+          "body": "Plans d’exécution, coupes, nomenclatures et exports pour coordination corps d’état (exemples client TBD)."
+        },
+        {
+          "heading": "Coordination",
+          "body": "Interfaces avec topographie et contrôle qualité pour limiter les reprises en chantier."
+        }
+      ],
+      "relatedHref": "etudes-topographie.html#ingenierie",
+      "relatedLabel": "Études & topographie"
+    },
+    {
+      "id": "topographie",
+      "title": "Topographie & géomatique",
+      "badge": "Pôle 03",
+      "summary": "Drone, MNT, orthophotos, bornage et implantation pour cadrer vos projets.",
+      "heroClass": "hero--page",
+      "sections": [
+        {
+          "heading": "Missions",
+          "body": "Levés classiques et drone, modèles numériques, implantation — périmètre géographique et délais type à confirmer (TBD)."
+        },
+        {
+          "heading": "Équipement",
+          "body": "Stations totales et drones disponibles via notre catalogue — voir fiches produit associées."
+        }
+      ],
+      "relatedHref": "etudes-topographie.html#topographie",
+      "relatedLabel": "Études & topographie"
+    },
+    {
+      "id": "expertise",
+      "title": "Expertise technique",
+      "badge": "Pôle 05",
+      "summary": "Audits, contre-expertises et contrôle qualité pour ouvrages en cours ou en litige.",
+      "heroClass": "hero--page",
+      "sections": [
+        {
+          "heading": "Méthodologie",
+          "body": "Grille d’audit et livrables à définir avec le mandant (TBD — pas de certification inventée)."
+        },
+        {
+          "heading": "Prise de contact",
+          "body": "Demande formalisée via devis ou WhatsApp avec description du contexte."
+        }
+      ],
+      "relatedHref": "construction.html#expertise",
+      "relatedLabel": "Sécurité & qualité"
+    }
+  ]
+}

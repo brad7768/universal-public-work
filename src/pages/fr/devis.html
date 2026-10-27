@@ -1,0 +1,123 @@
+
+        <section class="hero hero--page hero--devis hero--cinematic">
+          <div class="container hero-inner hero-inner--left">
+            <p class="hero-badge">Demande de devis</p>
+            <h1 class="hero-title-brand">
+              Votre projet,<br />
+              <span class="text-accent">notre expertise</span>
+            </h1>
+            <p class="lead hero-sub--light">Formulaire structuré — enregistrement Netlify Forms requis en production.</p>
+          </div>
+          <ul class="hero-pillars container" aria-label="Garanties">
+            <li>Réponse sous 24h visée</li>
+            <li>Conseil personnalisé</li>
+            <li>Devis clair</li>
+            <li>Données confidentielles</li>
+          </ul>
+        </section>
+
+        <!-- @breadcrumbs:Demander un devis -->
+
+        <section class="section" style="padding-top: 0">
+          <div class="container">
+            <div class="devis-panel reveal">
+              <div class="devis-steps devis-steps--5" aria-label="Étapes du formulaire">
+                <span class="devis-step is-active" data-step-indicator="1">01 Type</span>
+                <span class="devis-step" data-step-indicator="2">02 Projet</span>
+                <span class="devis-step" data-step-indicator="3">03 Contact</span>
+              </div>
+
+              <form
+                id="devis-form"
+                name="quote-request"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                data-lang="fr"
+                novalidate
+              >
+                <input type="hidden" name="form-name" value="quote-request" />
+                <input type="hidden" name="page" value="/fr/devis.html" />
+                <p class="sr-only" aria-hidden="true">
+                  <label>Laissez vide : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+                </p>
+
+                <fieldset class="devis-step-panel is-active" data-step="1">
+                  <legend>1. Quel est votre type de demande ?</legend>
+                  <div class="form-row">
+                    <label for="qv-type">Type de demande</label>
+                    <select id="qv-type" name="need_type" required>
+                      <option value="" disabled selected>— Sélectionnez —</option>
+                      <option value="construction">Construction de bâtiments</option>
+                      <option value="plans">Plans 2D / 3D</option>
+                      <option value="topo">Topographie et bornage</option>
+                      <option value="location">Location d’équipements</option>
+                      <option value="equipement">Achat d’équipement</option>
+                      <option value="materiaux">Vente de matériaux</option>
+                      <option value="autre">Autre demande</option>
+                    </select>
+                  </div>
+                  <input type="hidden" id="qv-product-id" name="product_id" value="" />
+                  <div class="form-row" id="qv-product-row" hidden>
+                    <label for="qv-product">Produit concerné</label>
+                    <select id="qv-product" name="product">
+                      <option value="">— Sélectionnez —</option>
+                      <option value="survey">Stations totales</option>
+                      <option value="drone">Drones d’inspection</option>
+                      <option value="mixer">Bétonnières industrielles</option>
+                      <option value="blocks">Parpaings lourds</option>
+                      <option value="industrial">Briques réfractaires</option>
+                    </select>
+                  </div>
+                  <button type="button" class="btn btn-primary" data-devis-next>Continuer</button>
+                </fieldset>
+
+                <fieldset class="devis-step-panel" data-step="2" hidden>
+                  <legend>2. Détails du projet</legend>
+                  <div class="form-row">
+                    <label for="qv-message">Description du projet</label>
+                    <textarea id="qv-message" name="message" required rows="5" placeholder="Lieu, surface, délais indicatifs…"></textarea>
+                  </div>
+                  <div class="form-row">
+                    <label for="qv-city">Ville / localisation</label>
+                    <input id="qv-city" name="city" type="text" />
+                  </div>
+                  <div class="form-actions-inline">
+                    <button type="button" class="btn btn-outline" data-devis-prev>Retour</button>
+                    <button type="button" class="btn btn-primary" data-devis-next>Continuer</button>
+                  </div>
+                </fieldset>
+
+                <fieldset class="devis-step-panel" data-step="3" hidden>
+                  <legend>3. Informations personnelles</legend>
+                  <div class="form-row">
+                    <label for="qv-name">Nom / Société</label>
+                    <input id="qv-name" name="name" type="text" autocomplete="name" required />
+                  </div>
+                  <div class="form-row">
+                    <label for="qv-phone">Téléphone WhatsApp</label>
+                    <input id="qv-phone" name="phone" type="tel" inputmode="tel" required />
+                  </div>
+                  <div class="form-row">
+                    <label for="qv-email">E-mail (facultatif)</label>
+                    <input id="qv-email" name="email" type="email" autocomplete="email" />
+                  </div>
+                  <label class="checkbox-row">
+                    <input type="checkbox" name="consent" value="yes" required />
+                    <span>J’accepte d’être recontacté (texte RGPD à compléter par le client).</span>
+                  </label>
+                  <div class="form-actions-inline">
+                    <button type="button" class="btn btn-outline" data-devis-prev>Retour</button>
+                    <button type="submit" class="btn btn-primary" id="devis-submit">Envoyer ma demande →</button>
+                  </div>
+                </fieldset>
+              </form>
+
+              <div class="form-status" id="devis-form-status" role="status" aria-live="polite" hidden></div>
+              <p class="backend-note">
+                <strong>Prérequis backend :</strong> activer « quote-request » dans Netlify, notifications e-mail/webhook,
+                tester en preview — pas de simulation de succès en local.
+              </p>
+            </div>
+          </div>
+        </section>

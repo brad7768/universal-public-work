@@ -1,0 +1,22 @@
+{
+  "domain": "https://www.universalpublicworks.com",
+  "whatsapp": "237659432516",
+  "telephone": "+237 659 432 516",
+  "telephoneAlt": "+237 654 804 123",
+  "email": "universalpublicworks@gmail.com",
+  "address": {
+    "street": "Marché Mendong",
+    "locality": "Yaoundé",
+    "country": "CM"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/",
+    "linkedin": "https://www.linkedin.com/",
+    "youtube": "https://www.youtube.com/",
+    "instagram": "https://www.instagram.com/"
+  },
+  "hours": {
+    "fr": "Lun.–Sam. 8h–18h · Dim. sur rendez-vous",
+    "en": "Mon–Sat 8am–6pm · Sun by appointment"
+  }
+}

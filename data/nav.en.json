@@ -1,0 +1,30 @@
+{
+  "skipLink": "Skip to main content",
+  "primary": [
+    { "id": "home", "label": "Home", "href": "index.html" },
+    { "id": "construction", "label": "Construction", "href": "construction.html" },
+    { "id": "realisations", "label": "Projects", "href": "realisations.html" },
+    { "id": "equipement", "label": "Equipment", "href": "equipement.html" },
+    { "id": "about", "label": "About", "href": "a-propos.html" },
+    { "id": "contact", "label": "Contact", "href": "contact.html" }
+  ],
+  "secondaryLabel": "Expertise",
+  "secondary": [
+    { "id": "ingenierie", "label": "Engineering & plans", "href": "etudes-topographie.html#ingenierie" },
+    { "id": "topographie", "label": "Surveying", "href": "etudes-topographie.html#topographie" },
+    { "id": "expertise", "label": "Technical expertise", "href": "construction.html#expertise" }
+  ],
+  "cta": { "label": "Request a quote", "href": "devis.html" },
+  "footer": {
+    "tagline": "Architectural precision, global reliability.",
+    "legal": [
+      { "label": "FAQ", "href": "faq.html" },
+      { "label": "Privacy", "href": "confidentialite.html" },
+      { "label": "Legal notice", "href": "mentions-legales.html" },
+      { "label": "Policies", "href": "politiques.html" }
+    ],
+    "credit": "by edgewebz"
+  },
+  "mobileMenuLabel": "Open menu",
+  "langLabel": "Choose language"
+}
