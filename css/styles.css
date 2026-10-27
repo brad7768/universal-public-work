@@ -1730,6 +1730,23 @@ body.nav-open {
     url("../assets/images/product-mixer.jpg");
 }
 
+.hero--legal.hero--cinematic {
+  background-image: linear-gradient(105deg, rgba(18, 59, 112, 0.9), rgba(18, 59, 112, 0.55)),
+    url("../assets/images/about-hero-planning.jpg");
+}
+
+.hero--detail.hero--cinematic {
+  background-image: linear-gradient(105deg, rgba(18, 59, 112, 0.88), rgba(18, 59, 112, 0.5)),
+    url("../assets/images/hero-construction.jpg");
+}
+
+.hero--legal.hero--cinematic .hero-badge,
+.hero--legal.hero--cinematic .lead,
+.hero--detail.hero--cinematic .hero-badge,
+.hero--detail.hero--cinematic .lead {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .hero-inner--left {
   max-width: 38rem;
 }
