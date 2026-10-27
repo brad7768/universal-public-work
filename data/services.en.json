@@ -1,0 +1,80 @@
+{
+  "services": [
+    {
+      "id": "construction",
+      "title": "Construction & public works",
+      "badge": "Pillar 01",
+      "summary": "General contractor: multi-trade coordination, structural work, and HSE protocols.",
+      "heroClass": "hero--construction",
+      "sections": [
+        {
+          "heading": "Typical scope",
+          "body": "Roads, public buildings, networks, and civil works — typology to be confirmed with your technical files (TBD)."
+        },
+        {
+          "heading": "Site deliverables",
+          "body": "Execution schedule, field reporting, prevention plans, and handover files per contract (TBD detail)."
+        }
+      ],
+      "relatedHref": "construction.html",
+      "relatedLabel": "Construction overview"
+    },
+    {
+      "id": "ingenierie",
+      "title": "Engineering & plans",
+      "badge": "Pillar 02",
+      "summary": "2D/3D plans, BIM-ready modelling, and technical packages to de-risk execution.",
+      "heroClass": "hero--page",
+      "sections": [
+        {
+          "heading": "Deliverables",
+          "body": "Execution drawings, sections, bills of materials, and exports for trade coordination (client samples TBD)."
+        },
+        {
+          "heading": "Coordination",
+          "body": "Interfaces with surveying and quality control to reduce rework on site."
+        }
+      ],
+      "relatedHref": "etudes-topographie.html#ingenierie",
+      "relatedLabel": "Surveys & topography"
+    },
+    {
+      "id": "topographie",
+      "title": "Surveying & geomatics",
+      "badge": "Pillar 03",
+      "summary": "Drone, DTM, orthophotos, boundary work, and setting-out to frame your projects.",
+      "heroClass": "hero--page",
+      "sections": [
+        {
+          "heading": "Missions",
+          "body": "Classic and drone surveys, digital models, setting-out — geographic scope and typical lead times TBD."
+        },
+        {
+          "heading": "Equipment",
+          "body": "Total stations and drones available through our catalog — see linked product sheets."
+        }
+      ],
+      "relatedHref": "etudes-topographie.html#topographie",
+      "relatedLabel": "Surveys & topography"
+    },
+    {
+      "id": "expertise",
+      "title": "Technical expertise",
+      "badge": "Pillar 05",
+      "summary": "Audits, counter-expertise, and quality control for works in progress or in dispute.",
+      "heroClass": "hero--page",
+      "sections": [
+        {
+          "heading": "Methodology",
+          "body": "Audit grid and deliverables to be defined with the client (TBD — no invented certifications)."
+        },
+        {
+          "heading": "Contact",
+          "body": "Formal request via quote form or WhatsApp with context description."
+        }
+      ],
+      "relatedHref": "construction.html#expertise",
+      "relatedLabel": "Safety & quality"
+    }
+  ]
+}

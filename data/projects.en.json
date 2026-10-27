@@ -1,42 +1,46 @@
 {
+  "disclaimer": "Illustrative examples — not verified client references. Replace with real case files supplied by UPUW.",
+  "placeholderNote": "Illustrative visuals (stock photos from the repo) — replace with client project photography.",
   "emptyMessage": "Portfolio coming soon — project photos and case studies to be supplied by the client.",
-  "placeholderNote": "Illustrative visuals (stock photos from the repo) — replace with verified client projects.",
   "projects": [
     {
-      "id": "residence-r1",
-      "title": "Residential home R+1",
-      "summary": "Residential program — client case study to be completed.",
-      "location": "Yaoundé, Cameroon",
-      "thumb": "about-architecture.jpg",
-      "category": "Residential",
-      "placeholder": true
-    },
-    {
-      "id": "voirie",
-      "title": "Roadway upgrade",
-      "summary": "Public works — illustrative visual pending client validation.",
-      "location": "Yaoundé, Cameroon",
+      "id": "voirie-mendong",
+      "title": "Example — Mendong district roadworks",
+      "summary": "Illustration of urban road rehabilitation (non-certified data).",
+      "sector": "Public works",
+      "year": "TBD",
+      "location": "Yaoundé — area to be confirmed",
       "thumb": "hero-construction.jpg",
-      "category": "Public works",
-      "placeholder": true
+      "hero": "hero-construction.jpg",
+      "scope": "Structural coordination, networks, and finishes — exact scope to be documented with the client.",
+      "results": "Quantified outcomes to be supplied (TBD).",
+      "gallery": ["hero-construction.jpg", "about-architecture.jpg"]
     },
     {
-      "id": "chantier-cadre",
-      "title": "Active construction site",
-      "summary": "Structural work — internal reference photo, not a certified deliverable.",
-      "location": "Capital region",
-      "thumb": "about-hero-planning.jpg",
-      "category": "Construction",
-      "placeholder": true
+      "id": "batiment-admin",
+      "title": "Example — Administrative building extension",
+      "summary": "Illustration of structural work and envelope (non-certified data).",
+      "sector": "Building",
+      "year": "TBD",
+      "location": "Capital region — site TBD",
+      "thumb": "about-architecture.jpg",
+      "hero": "about-architecture.jpg",
+      "scope": "Structure, trade coordination, and phased schedule — to be validated.",
+      "results": "Performance indicators to be supplied (TBD).",
+      "gallery": ["about-architecture.jpg", "hero-about-visual.png"]
     },
     {
       "id": "topo-drone",
-      "title": "Drone topographic survey",
-      "summary": "Surveys & geomatics — UPUW equipment illustration.",
-      "location": "Yaoundé, Cameroon",
+      "title": "Example — Drone survey mission",
+      "summary": "Illustration of aerial survey and DTM delivery (non-certified data).",
+      "sector": "Surveying",
+      "year": "TBD",
+      "location": "Study area TBD",
       "thumb": "product-drone.jpg",
-      "category": "Surveys",
-      "placeholder": true
+      "hero": "product-drone.jpg",
+      "scope": "Drone acquisition, processing, and geomatic deliverables — detail TBD.",
+      "results": "Accuracy and typical lead times to document (TBD).",
+      "gallery": ["product-drone.jpg", "product-survey.jpg"]
     }
   ]
 }

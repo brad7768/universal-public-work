@@ -135,5 +135,65 @@
       "activePrimary": null,
       "mainId": "main-content"
     }
+  },
+  {
+    "slug": "catalogue-equipements.html",
+    "fr": {
+      "title": "Catalogue d’équipements | UPUW",
+      "description": "Catalogue indicatif stations totales, drones, bétonnières et matériaux — sur devis.",
+      "activePrimary": "equipement",
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Equipment catalog | UPUW",
+      "description": "Indicative catalog of total stations, drones, mixers, and materials — quote on request.",
+      "activePrimary": "equipement",
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "faq.html",
+    "fr": {
+      "title": "FAQ | UPUW",
+      "description": "Questions fréquentes sur devis, délais et zone d’intervention.",
+      "activePrimary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "FAQ | UPUW",
+      "description": "Frequently asked questions about quotes, lead times, and service area.",
+      "activePrimary": null,
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "confidentialite.html",
+    "fr": {
+      "title": "Politique de confidentialité | UPUW",
+      "description": "Traitement des données personnelles — version éditoriale, texte juridique TBD.",
+      "activePrimary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Privacy policy | UPUW",
+      "description": "Personal data processing — editorial version, legal text TBD.",
+      "activePrimary": null,
+      "mainId": "main-content"
+    }
+  },
+  {
+    "slug": "mentions-legales.html",
+    "fr": {
+      "title": "Mentions légales | UPUW",
+      "description": "Informations légales éditoriales — RCCM et identifiants TBD.",
+      "activePrimary": null,
+      "mainId": "contenu-principal"
+    },
+    "en": {
+      "title": "Legal notice | UPUW",
+      "description": "Editorial legal information — trade register and IDs TBD.",
+      "activePrimary": null,
+      "mainId": "main-content"
+    }
   }
 ]
