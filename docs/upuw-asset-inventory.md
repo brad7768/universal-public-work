@@ -1,6 +1,6 @@
 # Inventaire des assets UPUW
 
-Mise à jour **Passe 2 — alignement maquettes** (branche `cursor/upuw-passe-2-pages-ab3a`).
+Mise à jour **logo + polish mockup/CMS** (branche `cursor/upuw-logo-mockup-cms-polish`).
 
 ---
 
@@ -8,10 +8,14 @@ Mise à jour **Passe 2 — alignement maquettes** (branche `cursor/upuw-passe-2-
 
 | Fichier | Dimensions | Usage |
 |---------|------------|--------|
-| `assets/brand/upuw-logo.jpg` | 1024×512 (JPEG, fond blanc) | Header et footer — `<img>` sans déformation (`object-fit: contain`, hauteur max ~48px) |
+| `assets/brand/upuw-logo.jpg` | 1024×512 (JPEG, fond blanc) | Header et footer — `<img>` (`object-fit: contain`, max-height ~48px header / ~36px footer) |
 
-Source : `logo upuw fond blanc.jpg` (dépôt `origin/main`), intégré en Passe 2.  
-L’ancien `assets/brand/upuw-logo.svg` (placeholder texte) a été retiré.
+| Source dépôt | Rôle |
+|--------------|------|
+| `logo upuw fond blanc.jpg` (racine, `origin/main`) | Upload client ; **copié automatiquement** vers `assets/brand/upuw-logo.jpg` à chaque `npm run build` |
+
+L’ancien doublon `assets/brand/logo-upuw-fond-blanc.jpg` a été retiré.  
+Pas de logo HTML / texte « UPUW » dans le shell — image officielle uniquement.
 
 ---
 
@@ -23,7 +27,7 @@ L’ancien `assets/brand/upuw-logo.svg` (placeholder texte) a été retiré.
 | `docs/reference/maquette desktop upuw.png` | Vue d’ensemble desktop 15 pages |
 | `docs/reference/maquette mobile upuw.png` | Vue d’ensemble mobile |
 
-Ces fichiers ne sont pas servis en production ; ils servent à la validation visuelle et à la Passe 3.
+Ces fichiers ne sont pas servis en production ; ils servent à la validation visuelle.
 
 ---
 
@@ -45,14 +49,17 @@ Ces fichiers ne sont pas servis en production ; ils servent à la validation vis
 
 ---
 
-## 4. Build & publication
+## 4. Build & publication (« CMS » statique)
 
 | Élément | Détail |
 |---------|--------|
-| Source éditable | `src/pages/{fr,en}/*.html` + `data/*.json` |
-| HTML publié | `fr/`, `en/` à la racine (commités ; Netlify `publish = "."`, **sans** commande de build) |
-| Regénération locale | `npm run build` → écrit `fr/`, `en/`, `sitemap.xml`, `_redirects` |
-| Vérification liens | `npm run check-links` |
+| Corps de page | `src/pages/{fr,en}/*.html` + placeholders (`<!-- @products -->`, `@stats`, …) |
+| Données listes | `data/*.json` (produits, projets, services, FAQ, nav) |
+| Registre pages | `src/pages-manifest.json` |
+| Générateur | `scripts/build.mjs` (en-tête fichier = doc workflow) |
+| HTML publié | `fr/`, `en/` à la racine |
+| Netlify | `netlify.toml` — `command = "npm run build"`, `NODE_VERSION = "20"`, `publish = "."` |
+| Vérification | `npm run check-links`, `npm run smoke` (serveur local requis pour smoke) |
 
 ---
 
@@ -66,4 +73,4 @@ Ces fichiers ne sont pas servis en production ; ils servent à la validation vis
 
 ---
 
-*Dernière vérification : inventaire filesystem + `npm run check-links` après build.*
+*Dernière vérification : build + check-links + smoke (11 URLs) sur cette branche.*
