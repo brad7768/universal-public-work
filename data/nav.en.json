@@ -2,32 +2,26 @@
   "skipLink": "Skip to main content",
   "primary": [
     { "id": "home", "label": "Home", "href": "index.html" },
-    { "id": "about", "label": "About", "href": "a-propos.html" },
     { "id": "construction", "label": "Construction", "href": "construction.html" },
-    { "id": "etudes", "label": "Surveys & topography", "href": "etudes-topographie.html" },
-    { "id": "equipement", "label": "Equipment", "href": "equipement.html" },
     { "id": "realisations", "label": "Projects", "href": "realisations.html" },
+    { "id": "equipement", "label": "Equipment", "href": "equipement.html" },
+    { "id": "about", "label": "About", "href": "a-propos.html" },
     { "id": "contact", "label": "Contact", "href": "contact.html" }
   ],
   "secondaryLabel": "Expertise",
-  "secondary": [],
+  "secondary": [
+    { "id": "ingenierie", "label": "Engineering & plans", "href": "etudes-topographie.html#ingenierie" },
+    { "id": "topographie", "label": "Surveying", "href": "etudes-topographie.html#topographie" },
+    { "id": "expertise", "label": "Technical expertise", "href": "construction.html#expertise" }
+  ],
   "cta": { "label": "Request a quote", "href": "devis.html" },
   "footer": {
-    "tagline": "Build today. Shape tomorrow.",
-    "description": "General contractor — construction, technical surveys, and equipment in Yaoundé and the national capital region.",
-    "quickLinksLabel": "Quick links",
-    "servicesLabel": "Our services",
-    "contactLabel": "Contact",
-    "services": [
-      { "label": "Building construction", "href": "construction.html" },
-      { "label": "Public works", "href": "construction.html" },
-      { "label": "2D / 3D plans", "href": "etudes-topographie.html" },
-      { "label": "Surveying & boundary work", "href": "etudes-topographie.html" },
-      { "label": "Equipment rental", "href": "equipement.html" }
-    ],
+    "tagline": "Architectural precision, global reliability.",
     "legal": [
-      { "label": "Privacy policy", "href": "politiques.html#confidentialite" },
-      { "label": "Legal notice", "href": "politiques.html#mentions" }
+      { "label": "FAQ", "href": "faq.html" },
+      { "label": "Privacy", "href": "confidentialite.html" },
+      { "label": "Legal notice", "href": "mentions-legales.html" },
+      { "label": "Policies", "href": "politiques.html" }
     ],
     "credit": "by edgewebz"
   },

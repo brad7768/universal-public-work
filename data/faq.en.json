@@ -1,20 +1,47 @@
 {
+  "intro": "Indicative answers — legal and operational content to be validated with UPUW (items marked TBD).",
   "categories": [
     {
-      "id": "quote",
+      "id": "devis",
       "title": "Quotes & orders",
-      "items": []
+      "items": [
+        {
+          "q": "How do I request a quote?",
+          "a": "Use the Request a quote form or WhatsApp (+237 659 432 516). For a catalog product, open the product sheet then Request a quote (product id is passed automatically)."
+        },
+        {
+          "q": "Are listed prices firm?",
+          "a": "No — everything is quote on request. Pricing, taxes, and delivery fees to be confirmed in writing (TBD commercial process)."
+        }
+      ]
     },
     {
-      "id": "timeline",
-      "title": "Timelines",
-      "items": []
+      "id": "delais",
+      "title": "Lead times & planning",
+      "items": [
+        {
+          "q": "What lead time for a typical project?",
+          "a": "Depends on scope and permits. Indicative schedule after study — typical lead times to document (TBD)."
+        },
+        {
+          "q": "Equipment procurement?",
+          "a": "Manufacturer and import logistics lead times to confirm per product (TBD)."
+        }
+      ]
     },
     {
-      "id": "area",
+      "id": "zone",
       "title": "Service area",
-      "items": []
+      "items": [
+        {
+          "q": "Where do you operate?",
+          "a": "Yaoundé and the national capital region — geographic extension to confirm with the client (TBD)."
+        },
+        {
+          "q": "Are all projects on the site verified references?",
+          "a": "No. Sheets marked Example or Illustration are not certified references until validated by the client."
+        }
+      ]
     }
-  ],
-  "note": "FAQ content to be completed in Pass 4 — do not invent answers."
+  ]
 }

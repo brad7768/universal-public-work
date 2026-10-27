@@ -28,7 +28,20 @@
                       <option value="plans">2D / 3D plans</option>
                       <option value="topo">Surveying &amp; boundaries</option>
                       <option value="location">Equipment rental</option>
+                      <option value="equipement">Equipment purchase</option>
                       <option value="autre">Other</option>
+                    </select>
+                  </div>
+                  <input type="hidden" id="qv-product-id" name="product_id" value="" />
+                  <div class="form-row" id="qv-product-row" hidden>
+                    <label for="qv-product">Product</label>
+                    <select id="qv-product" name="product">
+                      <option value="">— Select —</option>
+                      <option value="survey">Total stations</option>
+                      <option value="drone">Inspection drones</option>
+                      <option value="mixer">Industrial mixers</option>
+                      <option value="blocks">Heavy blocks</option>
+                      <option value="industrial">Refractory bricks</option>
                     </select>
                   </div>
                   <button type="button" class="btn btn-primary" data-devis-next>Continue</button>

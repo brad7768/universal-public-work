@@ -184,7 +184,35 @@
     return true;
   }
 
+  function applyDevisQueryParams() {
+    if (!devisForm) return;
+    var params = new URLSearchParams(window.location.search);
+    var productId = params.get("product");
+    var need = document.getElementById("qv-type");
+    var productSelect = document.getElementById("qv-product");
+    var productHidden = document.getElementById("qv-product-id");
+    var productRow = document.getElementById("qv-product-row");
+    if (productId && need) {
+      need.value = "equipement";
+      if (productRow) productRow.hidden = false;
+      if (productSelect) productSelect.value = productId;
+      if (productHidden) productHidden.value = productId;
+    }
+    if (need && productRow) {
+      need.addEventListener("change", function () {
+        productRow.hidden = need.value !== "equipement";
+      });
+      productRow.hidden = need.value !== "equipement";
+    }
+    if (productSelect && productHidden) {
+      productSelect.addEventListener("change", function () {
+        productHidden.value = productSelect.value || "";
+      });
+    }
+  }
+
   if (devisForm) {
+    applyDevisQueryParams();
     var devisStep = 1;
     devisForm.querySelectorAll("[data-devis-next]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -219,6 +247,14 @@
       var phone = document.getElementById("qv-phone");
       var need = document.getElementById("qv-type");
       var message = document.getElementById("qv-message");
+      var productRef = document.getElementById("qv-product");
+      var productHidden = document.getElementById("qv-product-id");
+      var productLine =
+        productRef && productRef.value
+          ? productRef.options[productRef.selectedIndex].text
+          : productHidden && productHidden.value
+            ? productHidden.value
+            : "";
       var lines =
         lang === "en"
           ? [
@@ -226,6 +262,7 @@
               "Name: " + (name ? name.value : ""),
               "Phone: " + (phone ? phone.value : ""),
               "Need: " + (need ? need.options[need.selectedIndex].text : ""),
+              productLine ? "Product: " + productLine : "",
               "Details: " + (message ? message.value : ""),
             ]
           : [
@@ -233,8 +270,12 @@
               "Nom : " + (name ? name.value : ""),
               "Téléphone : " + (phone ? phone.value : ""),
               "Besoin : " + (need ? need.options[need.selectedIndex].text : ""),
+              productLine ? "Produit : " + productLine : "",
               "Détails : " + (message ? message.value : ""),
             ];
+      lines = lines.filter(function (line) {
+        return line;
+      });
       var waText = encodeURIComponent(lines.join("\n"));
 
       var fd = new FormData(devisForm);
@@ -270,6 +311,12 @@
   /* Procurement form → WhatsApp */
   var procureForm = document.getElementById("procure-form");
   if (procureForm) {
+    var procureParams = new URLSearchParams(window.location.search);
+    var procureProduct = procureParams.get("product");
+    var pfProduct = document.getElementById("pf-product");
+    if (procureProduct && pfProduct) {
+      pfProduct.value = procureProduct;
+    }
     procureForm.addEventListener("submit", function (e) {
       e.preventDefault();
       if (typeof procureForm.reportValidity === "function" && !procureForm.reportValidity()) {

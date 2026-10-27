@@ -4,47 +4,59 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-const langs = ["fr", "en"];
-const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "src/pages-manifest.json"), "utf8"));
-const slugs = manifest.map((p) => p.slug);
-
-const hrefRe = /href="([^"#?]+)(?:[#?][^"]*)?"/g;
+const LANGS = ["fr", "en"];
 const errors = [];
 
-for (const lang of langs) {
-  for (const slug of slugs) {
-    const file = path.join(ROOT, lang, slug);
-    if (!fs.existsSync(file)) {
-      errors.push(`MISSING ${lang}/${slug}`);
-      continue;
-    }
+function walkHtml(dir) {
+  const files = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) files.push(...walkHtml(full));
+    else if (entry.name.endsWith(".html")) files.push(full);
+  }
+  return files;
+}
+
+function resolveTarget(fromFile, href) {
+  if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return null;
+  if (/^https?:\/\//i.test(href)) return null;
+  const clean = href.split("?")[0].split("#")[0];
+  if (!clean) return null;
+  const fromDir = path.dirname(fromFile);
+  let resolved = path.normalize(path.join(fromDir, clean));
+  if (resolved.endsWith(path.sep) || !path.extname(resolved)) {
+    resolved = path.join(resolved, "index.html");
+  }
+  return resolved;
+}
+
+for (const lang of LANGS) {
+  const langDir = path.join(ROOT, lang);
+  if (!fs.existsSync(langDir)) {
+    errors.push(`Missing language directory: ${lang}/`);
+    continue;
+  }
+  for (const file of walkHtml(langDir)) {
     const html = fs.readFileSync(file, "utf8");
-    let m;
-    while ((m = hrefRe.exec(html))) {
-      const href = m[1];
-      if (/^(https?:|mailto:|tel:|javascript:)/.test(href)) continue;
-      if (href.startsWith("../")) {
-        const target = path.join(ROOT, href.replace(/^\.\.\//, ""));
-        if (!fs.existsSync(target) && !fs.existsSync(target.replace(/\/$/, ""))) {
-          errors.push(`${lang}/${slug} → ${href} (asset missing)`);
-        }
-        continue;
-      }
-      if (!href.endsWith(".html") && href !== "index.html") continue;
-      const target = path.join(ROOT, lang, path.basename(href));
+    const hrefs = [...html.matchAll(/\shref="([^"]+)"/g)].map((m) => m[1]);
+    for (const href of hrefs) {
+      const target = resolveTarget(file, href);
+      if (!target) continue;
       if (!fs.existsSync(target)) {
-        errors.push(`${lang}/${slug} → ${href}`);
+        errors.push(`${path.relative(ROOT, file)} → ${href} (missing ${path.relative(ROOT, target)})`);
       }
     }
   }
 }
 
-for (const rootFile of ["index.html", "404.html", "css/styles.css", "js/main.js", "assets/brand/upuw-logo.jpg"]) {
-  if (!fs.existsSync(path.join(ROOT, rootFile))) errors.push(`MISSING root: ${rootFile}`);
+for (const rootPage of ["index.html", "404.html"]) {
+  const p = path.join(ROOT, rootPage);
+  if (!fs.existsSync(p)) errors.push(`Missing root file: ${rootPage}`);
 }
 
 if (errors.length) {
   console.error("Link check failed:\n" + errors.join("\n"));
   process.exit(1);
 }
-console.log(`OK — ${langs.length * slugs.length} pages, internal links and key assets.`);
+
+console.log(`Link check OK (${LANGS.map((l) => l + "/").join(", ")} + root pages)`);
