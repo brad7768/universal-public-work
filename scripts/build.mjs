@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const DIST = path.join(ROOT, "dist");
-const LOGO = "../assets/brand/logo-upuw-fond-blanc.jpg";
+const LOGO = "../assets/brand/upuw-logo.jpg";
 
 const site = JSON.parse(fs.readFileSync(path.join(ROOT, "data/site.json"), "utf8"));
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "src/pages-manifest.json"), "utf8"));
@@ -540,11 +540,11 @@ function renderProjectDetailPage(lang, proj, allProjects) {
   const gallery = (proj.gallery || [proj.hero])
     .map(
       (img) =>
-        `<figure class="detail-gallery-item"><img src="../assets/images/${escapeHtml(img)}" alt="" loading="lazy" /></figure>`
+        `<figure class="detail-gallery-item"><img src="../assets/images/${escapeHtml(img)}" alt="${escapeHtml(proj.title)} — ${lang === "fr" ? "photo projet" : "project photo"}" loading="lazy" /></figure>`
     )
     .join("\n              ");
   const content = `
-        <section class="hero hero--page hero--detail">
+        <section class="hero hero--page hero--detail hero--cinematic">
           <div class="container hero-inner">
             <p class="hero-badge">${escapeHtml(proj.sector || "")}</p>
             <h1>${escapeHtml(proj.title)}</h1>
@@ -601,7 +601,7 @@ function renderProductDetailPage(lang, product) {
     .map((s) => `<div><dt>${escapeHtml(s.label)}</dt><dd>${escapeHtml(s.value)}</dd></div>`)
     .join("\n                ");
   const content = `
-        <section class="hero hero--page hero--buy">
+        <section class="hero hero--page hero--buy hero--cinematic">
           <div class="container hero-inner">
             <p class="hero-badge">${lang === "fr" ? "Fiche produit" : "Product sheet"}</p>
             <h1>${escapeHtml(product.name)}</h1>
@@ -643,7 +643,7 @@ function renderServiceDetailPage(lang, service) {
     )
     .join("\n            ");
   const content = `
-        <section class="hero hero--page ${escapeHtml(service.heroClass || "hero--page")}">
+        <section class="hero hero--page hero--cinematic ${escapeHtml(service.heroClass || "hero--page")}">
           <div class="container hero-inner">
             <p class="hero-badge">${escapeHtml(service.badge || "")}</p>
             <h1>${escapeHtml(service.title)}</h1>
