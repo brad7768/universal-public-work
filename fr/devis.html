@@ -164,8 +164,21 @@
                       <option value="plans">Plans 2D / 3D</option>
                       <option value="topo">Topographie et bornage</option>
                       <option value="location">Location d’équipements</option>
+                      <option value="equipement">Achat d’équipement</option>
                       <option value="materiaux">Vente de matériaux</option>
                       <option value="autre">Autre demande</option>
+                    </select>
+                  </div>
+                  <input type="hidden" id="qv-product-id" name="product_id" value="" />
+                  <div class="form-row" id="qv-product-row" hidden>
+                    <label for="qv-product">Produit concerné</label>
+                    <select id="qv-product" name="product">
+                      <option value="">— Sélectionnez —</option>
+                      <option value="survey">Stations totales</option>
+                      <option value="drone">Drones d’inspection</option>
+                      <option value="mixer">Bétonnières industrielles</option>
+                      <option value="blocks">Parpaings lourds</option>
+                      <option value="industrial">Briques réfractaires</option>
                     </select>
                   </div>
                   <button type="button" class="btn btn-primary" data-devis-next>Continuer</button>
