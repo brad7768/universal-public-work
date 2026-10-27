@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": "survey",
+      "name": "Stations totales",
+      "description": "Instruments de géodésie de précision avec formation terrain et garantie constructeur supervisée.",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--survey",
+      "cta": "Détails via WhatsApp"
+    },
+    {
+      "id": "drone",
+      "name": "Drones d’inspection",
+      "description": "Profils topo, inspections d’actifs critiques et diffusion cloud sécurisée pour décision rapide.",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--drone",
+      "cta": "Étude de besoin"
+    },
+    {
+      "id": "mixer",
+      "name": "Bétonnières industrielles",
+      "description": "Capacités haute cadence avec options automatisées pour projets autoroutiers ou barrages.",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--mixer",
+      "cta": "Planifier la logistique"
+    },
+    {
+      "id": "blocks",
+      "name": "Parpaings lourds",
+      "description": "Gammes résistantes pour charges verticales et ouvrages antisismiques lorsque spécifié.",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--blocks",
+      "cta": "Fiche technique"
+    },
+    {
+      "id": "industrial",
+      "name": "Briques réfractaires",
+      "description": "Matériaux thermiquement résistants pour infrastructures industrielles et haute température.",
+      "priceLabel": "Sur devis",
+      "mediaClass": "product-media--industrial",
+      "cta": "Configurer un lot"
+    }
+  ]
+}

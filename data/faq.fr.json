@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "id": "devis",
+      "title": "Devis & commandes",
+      "items": []
+    },
+    {
+      "id": "delais",
+      "title": "Délais & planning",
+      "items": []
+    },
+    {
+      "id": "zone",
+      "title": "Zone d’intervention",
+      "items": []
+    }
+  ],
+  "note": "Contenu FAQ à compléter en Passe 4 — ne pas inventer de réponses."
+}

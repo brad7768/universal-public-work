@@ -1,8 +1,8 @@
-# Static site — no build step (HTML/CSS/JS at repo root).
+# Static site — minimal Node build assembles pages into dist/
 
 [build]
-  publish = "."
-  # command intentionally omitted — nothing to compile
+  command = "npm run build"
+  publish = "dist"
 
 [dev]
   publish = "."

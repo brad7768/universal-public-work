@@ -1,0 +1,8 @@
+{
+  "name": "universal-public-work",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}

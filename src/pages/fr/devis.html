@@ -1,0 +1,98 @@
+
+        <section class="hero hero--page hero--devis">
+          <div class="container hero-inner">
+            <p class="hero-badge">Demande formalisée</p>
+            <h1>Demander un devis</h1>
+            <p class="lead">Formulaire en trois étapes — enregistrement serveur via Netlify Forms requis en production.</p>
+          </div>
+        </section>
+
+        <section class="section" style="padding-top: 0">
+          <div class="container">
+            <div class="devis-panel reveal">
+              <div class="devis-steps" aria-label="Étapes du formulaire">
+                <span class="devis-step is-active" data-step-indicator="1">1. Contact</span>
+                <span class="devis-step" data-step-indicator="2">2. Projet</span>
+                <span class="devis-step" data-step-indicator="3">3. Envoi</span>
+              </div>
+
+              <form
+                id="devis-form"
+                name="quote-request"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                data-lang="fr"
+                novalidate
+              >
+                <input type="hidden" name="form-name" value="quote-request" />
+                <input type="hidden" name="page" value="/fr/devis.html" />
+                <p class="sr-only" aria-hidden="true">
+                  <label>Laissez vide : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+                </p>
+
+                <fieldset class="devis-step-panel is-active" data-step="1">
+                  <legend>Coordonnées</legend>
+                  <div class="form-row">
+                    <label for="qv-name">Nom / Société</label>
+                    <input id="qv-name" name="name" type="text" autocomplete="name" required />
+                  </div>
+                  <div class="form-row">
+                    <label for="qv-phone">Téléphone WhatsApp</label>
+                    <input id="qv-phone" name="phone" type="tel" inputmode="tel" required />
+                  </div>
+                  <div class="form-row">
+                    <label for="qv-email">E-mail (facultatif)</label>
+                    <input id="qv-email" name="email" type="email" autocomplete="email" />
+                  </div>
+                  <button type="button" class="btn btn-primary" data-devis-next>Continuer</button>
+                </fieldset>
+
+                <fieldset class="devis-step-panel" data-step="2" hidden>
+                  <legend>Type de besoin</legend>
+                  <div class="form-row">
+                    <label for="qv-type">Domaine</label>
+                    <select id="qv-type" name="need_type" required>
+                      <option value="" disabled selected>— Sélectionnez —</option>
+                      <option value="construction">Construction / travaux publics</option>
+                      <option value="etudes">Études &amp; topographie</option>
+                      <option value="equipement">Équipement / procurement</option>
+                      <option value="autre">Autre (à préciser)</option>
+                    </select>
+                  </div>
+                  <div class="form-row">
+                    <label for="qv-message">Description du projet</label>
+                    <textarea id="qv-message" name="message" required rows="5" placeholder="Lieu, délais indicatifs, contraintes…"></textarea>
+                  </div>
+                  <div class="form-actions-inline">
+                    <button type="button" class="btn btn-outline" data-devis-prev>Retour</button>
+                    <button type="button" class="btn btn-primary" data-devis-next>Continuer</button>
+                  </div>
+                </fieldset>
+
+                <fieldset class="devis-step-panel" data-step="3" hidden>
+                  <legend>Confirmation</legend>
+                  <p class="field-hint">
+                    En soumettant, une requête POST est envoyée à Netlify Forms (si activé sur le déploiement). Aucune
+                    confirmation de succès n’est affichée tant que le backend n’est pas validé — vous pouvez aussi ouvrir
+                    WhatsApp avec le récapitulatif.
+                  </p>
+                  <label class="checkbox-row">
+                    <input type="checkbox" name="consent" value="yes" required />
+                    <span>J’accepte d’être recontacté pour cette demande (texte RGPD à compléter par le client).</span>
+                  </label>
+                  <div class="form-actions-inline">
+                    <button type="button" class="btn btn-outline" data-devis-prev>Retour</button>
+                    <button type="submit" class="btn btn-primary" id="devis-submit">Envoyer la demande</button>
+                  </div>
+                </fieldset>
+              </form>
+
+              <div class="form-status" id="devis-form-status" role="status" aria-live="polite" hidden></div>
+              <p class="backend-note">
+                <strong>Prérequis backend :</strong> activer le formulaire «&nbsp;quote-request&nbsp;» dans Netlify, configurer
+                notifications e-mail/webhook, puis tester en preview — pas de simulation de succès en local.
+              </p>
+            </div>
+          </div>
+        </section>

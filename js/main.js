@@ -134,8 +134,140 @@
     });
   }
 
-  /* Procurement form → WhatsApp */
   var waBase = "https://wa.me/237659432516";
+
+  /* Multi-step quote form (devis) */
+  var devisForm = document.getElementById("devis-form");
+  var devisStatus = document.getElementById("devis-form-status");
+
+  function setDevisStatus(kind, message) {
+    if (!devisStatus) return;
+    devisStatus.hidden = false;
+    devisStatus.className = "form-status is-" + kind;
+    devisStatus.textContent = message;
+  }
+
+  function clearDevisStatus() {
+    if (!devisStatus) return;
+    devisStatus.hidden = true;
+    devisStatus.textContent = "";
+    devisStatus.className = "form-status";
+  }
+
+  function showDevisStep(step) {
+    if (!devisForm) return;
+    devisForm.querySelectorAll(".devis-step-panel").forEach(function (panel) {
+      var n = parseInt(panel.getAttribute("data-step"), 10);
+      var active = n === step;
+      panel.hidden = !active;
+      panel.classList.toggle("is-active", active);
+    });
+    devisForm.querySelectorAll("[data-step-indicator]").forEach(function (el) {
+      var n = parseInt(el.getAttribute("data-step-indicator"), 10);
+      el.classList.toggle("is-active", n === step);
+    });
+  }
+
+  function validateDevisStep(step) {
+    if (!devisForm) return false;
+    var panel = devisForm.querySelector('.devis-step-panel[data-step="' + step + '"]');
+    if (!panel) return true;
+    var fields = panel.querySelectorAll("input, select, textarea");
+    for (var i = 0; i < fields.length; i++) {
+      var field = fields[i];
+      if (field.type === "checkbox" && step !== 3) continue;
+      if (!field.checkValidity()) {
+        field.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  if (devisForm) {
+    var devisStep = 1;
+    devisForm.querySelectorAll("[data-devis-next]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (!validateDevisStep(devisStep)) return;
+        clearDevisStatus();
+        devisStep = Math.min(3, devisStep + 1);
+        showDevisStep(devisStep);
+      });
+    });
+    devisForm.querySelectorAll("[data-devis-prev]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        clearDevisStatus();
+        devisStep = Math.max(1, devisStep - 1);
+        showDevisStep(devisStep);
+      });
+    });
+
+    devisForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!validateDevisStep(3)) return;
+      var lang = devisForm.getAttribute("data-lang") || "fr";
+      var submitBtn = document.getElementById("devis-submit");
+      if (submitBtn) submitBtn.disabled = true;
+      setDevisStatus(
+        "loading",
+        lang === "en"
+          ? "Sending to Netlify Forms… (no success is guaranteed until the backend is configured.)"
+          : "Envoi vers Netlify Forms… (aucun succès garanti tant que le backend n’est pas configuré.)"
+      );
+
+      var name = document.getElementById("qv-name");
+      var phone = document.getElementById("qv-phone");
+      var need = document.getElementById("qv-type");
+      var message = document.getElementById("qv-message");
+      var lines =
+        lang === "en"
+          ? [
+              "Hello UPUW — quote request:",
+              "Name: " + (name ? name.value : ""),
+              "Phone: " + (phone ? phone.value : ""),
+              "Need: " + (need ? need.options[need.selectedIndex].text : ""),
+              "Details: " + (message ? message.value : ""),
+            ]
+          : [
+              "Bonjour UPUW — demande de devis :",
+              "Nom : " + (name ? name.value : ""),
+              "Téléphone : " + (phone ? phone.value : ""),
+              "Besoin : " + (need ? need.options[need.selectedIndex].text : ""),
+              "Détails : " + (message ? message.value : ""),
+            ];
+      var waText = encodeURIComponent(lines.join("\n"));
+
+      var fd = new FormData(devisForm);
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: new URLSearchParams(fd).toString(),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          setDevisStatus(
+            "neutral",
+            lang === "en"
+              ? "Request posted to Netlify (HTTP OK). Confirm delivery in the Netlify dashboard — not a guaranteed receipt."
+              : "Requête POST acceptée par Netlify (HTTP OK). Confirmez la réception dans le tableau de bord Netlify — ce n’est pas un accusé garanti."
+          );
+        })
+        .catch(function () {
+          setDevisStatus(
+            "error",
+            lang === "en"
+              ? "Could not reach Netlify Forms (local preview or missing config). Use WhatsApp or try again on deploy."
+              : "Impossible de joindre Netlify Forms (preview locale ou config manquante). Utilisez WhatsApp ou réessayez après déploiement."
+          );
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+          window.open(waBase + "?text=" + waText, "_blank", "noopener,noreferrer");
+        });
+    });
+  }
+
+  /* Procurement form → WhatsApp */
   var procureForm = document.getElementById("procure-form");
   if (procureForm) {
     procureForm.addEventListener("submit", function (e) {

@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "id": "quote",
+      "title": "Quotes & orders",
+      "items": []
+    },
+    {
+      "id": "timeline",
+      "title": "Timelines",
+      "items": []
+    },
+    {
+      "id": "area",
+      "title": "Service area",
+      "items": []
+    }
+  ],
+  "note": "FAQ content to be completed in Pass 4 — do not invent answers."
+}

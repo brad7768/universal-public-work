@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": "survey",
+      "name": "Total stations",
+      "description": "Precision geodesy instruments with field training and manufacturer warranty oversight.",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--survey",
+      "cta": "Details via WhatsApp"
+    },
+    {
+      "id": "drone",
+      "name": "Inspection drones",
+      "description": "Topo profiles, critical asset inspections, and secure cloud delivery for fast decisions.",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--drone",
+      "cta": "Needs assessment"
+    },
+    {
+      "id": "mixer",
+      "name": "Industrial mixers",
+      "description": "High-throughput capacity with automated options for highway or dam projects.",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--mixer",
+      "cta": "Plan logistics"
+    },
+    {
+      "id": "blocks",
+      "name": "Heavy blocks",
+      "description": "Ranges rated for vertical loads and seismic applications when specified.",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--blocks",
+      "cta": "Technical sheet"
+    },
+    {
+      "id": "industrial",
+      "name": "Refractory bricks",
+      "description": "Heat-resistant materials for industrial and high-temperature infrastructure.",
+      "priceLabel": "Quote on request",
+      "mediaClass": "product-media--industrial",
+      "cta": "Configure a batch"
+    }
+  ]
+}

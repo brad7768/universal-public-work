@@ -1,0 +1,66 @@
+
+        <section class="hero hero--page hero--buy">
+          <div class="container hero-inner">
+            <p class="hero-badge">Approvisionnement industriel</p>
+            <h1 class="hero-title-brand">Équipement &amp; procurement</h1>
+            <p class="lead" style="margin-top: 1rem">
+              Centralisez l’achat d’instruments haute précision et de composants critiques. Chaque position est cotée «&nbsp;sur
+              devis&nbsp;» et validée par notre équipe locale.
+            </p>
+          </div>
+        </section>
+
+        <section class="section" style="padding-top: 0" aria-labelledby="catalogue-fr">
+          <div class="container">
+            <h2 id="catalogue-fr" class="sr-only">Produits phares</h2>
+            <div class="product-grid">
+              <!-- @products -->
+            </div>
+          </div>
+        </section>
+
+        <section class="container" aria-labelledby="form-titre-fr" id="commande">
+          <div class="procure-panel reveal">
+            <h2 id="form-titre-fr">Initier l’approvisionnement</h2>
+            <p class="sub">Pré-remplissez les champs puis envoyez le message officiel depuis WhatsApp.</p>
+            <form
+              id="procure-form"
+              name="procurement"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              data-lang="fr"
+            >
+              <input type="hidden" name="form-name" value="procurement" />
+              <input type="hidden" name="page" value="/fr/equipement.html" />
+              <p class="sr-only" aria-hidden="true">
+                <label>Laissez vide : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+              </p>
+              <div class="form-row">
+                <label for="pf-name">Nom complet / Société</label>
+                <input id="pf-name" name="name" type="text" autocomplete="name" required placeholder="Jane Doe SARLU" />
+              </div>
+              <div class="form-row">
+                <label for="pf-phone">Téléphone WhatsApp</label>
+                <input id="pf-phone" name="phone" type="tel" inputmode="tel" required placeholder="+237 659 432 516" />
+              </div>
+              <div class="form-row">
+                <label for="pf-product">Produit préféré</label>
+                <select id="pf-product" name="product" required>
+                  <option value="" disabled selected>— Sélectionnez —</option>
+                  <!-- @product-options -->
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="pf-qty">Quantité estimée</label>
+                <input id="pf-qty" name="qty" type="text" required placeholder="ex. 2 unités, 400 palettes" />
+              </div>
+              <div class="form-row">
+                <label for="pf-note">Contexte projet (facultatif)</label>
+                <textarea id="pf-note" name="note" placeholder="Lieu de livraison, délais…"></textarea>
+              </div>
+              <p class="field-hint">Transmission via WhatsApp officiel&nbsp;: +237&nbsp;659&nbsp;432&nbsp;516</p>
+              <button type="submit" class="btn btn-primary">Commander via WhatsApp</button>
+            </form>
+          </div>
+        </section>
