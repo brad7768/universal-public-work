@@ -1,8 +1,14 @@
-# Static site — HTML/CSS/JS at repo root (fr/ + en/ committed; no CI build).
-# Regenerate pages locally: npm run build (optional dev sync).
+# Static site — HTML/CSS/JS at repo root.
+# Netlify runs `npm run build` on each deploy: generates fr/ and en/ from src/ templates
+# (scripts/build.mjs). publish = "." serves the repo root after that build.
+# Local dev: npm run build to sync committed fr/ + en/ before push.
 
 [build]
+  command = "npm run build"
   publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
 
 [dev]
   publish = "."

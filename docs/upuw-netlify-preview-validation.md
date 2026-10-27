@@ -20,12 +20,13 @@ Static publish layout, form markup, local build/smoke, and client-side prefill b
 |--------|--------|
 | PR #6 base | `cursor/upuw-consolidation-pr2-pr3` (PR #5) — **confirmed** via `gh pr view 6` |
 | Ancestry | `origin/cursor/upuw-consolidation-pr2-pr3` is ancestor of PR #6 HEAD — **confirmed** |
-| `netlify.toml` publish dir | `publish = "."` (repo root); **no** Netlify build command |
-| Build vs publish | `npm run build` writes committed `fr/` + `en/` from `src/` via `scripts/build.mjs`; Netlify serves **committed root HTML**, not a separate `dist/` |
+| `netlify.toml` publish dir | `publish = "."` (repo root) |
+| Netlify build | `command = "npm run build"`; `NODE_VERSION = "20"` — runs on deploy/preview |
+| Build vs publish | `npm run build` writes `fr/` + `en/` from `src/` via `scripts/build.mjs`; Netlify publishes repo root (not `dist/` unless `UPUW_DIST=1`) |
 | Site ID in repo | **None** (`netlify.toml` has no `site_id`) |
 | GitHub ↔ Netlify signal on PR #6 | Commit status **pending**, **zero** statuses; **no** Netlify bot comment on PR #6 |
 
-**Publish implication:** Production/preview must contain up-to-date built `fr/` and `en/` at deploy time. CI does not run `npm run build` on Netlify for this config.
+**Publish implication:** Each Netlify deploy (production and Deploy Preview) runs `npm run build` so `fr/` and `en/` match `src/` at deploy time. Committed HTML in git should still be kept in sync locally before merge to ease review and offline checks.
 
 ---
 
@@ -132,6 +133,34 @@ Forms under test: **`quote-request`** (devis), **`procurement`** (equipement).
 1. Obtain **Deploy Preview** for PR #6 (or #7 stack) and repeat Phase D with `TEST` data only on preview.
 2. In Netlify UI: register **`quote-request`** and **`procurement`**, enable email/webhook notifications, confirm submissions on preview (not only HTTP 200).
 3. Human sign-off on PRs #2–#7 — **no agent merge**.
+
+---
+
+## Merge & deploy procedure (human only — do not execute from agents)
+
+**No merge or production deploy is performed by automation.** Follow this order after review:
+
+### Safe merge order (stacked PRs)
+
+Merge into `main` in dependency order so each PR’s base is already on `main`:
+
+1. **PR #5** → `main` (consolidation base)
+2. **PR #6** → `main` (preprod review; depends on #5)
+3. **PR #7** → `main` (this Netlify build + validation doc; depends on #6)
+
+Alternatively, **squash-merge** each PR in the same sequence if your team prefers a linear history; do not merge #7 before #6 or #6 before #5.
+
+### Deploy Preview testing (before merge)
+
+- On each open PR, use the Netlify **Deploy Preview** link from the GitHub check or bot comment.
+- Confirm `npm run build` succeeded in the Netlify deploy log.
+- Spot-check FR/EN routes, forms (`quote-request`, `procurement`), and `devis.html?product=…` prefill on the **preview URL only** — not production.
+
+### After merge to `main`
+
+- Netlify **auto-deploys** from `main` when the GitHub ↔ Netlify link is active.
+- Verify the **production** site URL (configured in Netlify) after the deploy completes; compare with the last approved Deploy Preview.
+- Re-run form submission smoke tests on production only after explicit human approval.
 
 ---
 
