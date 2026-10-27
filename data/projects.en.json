@@ -1,4 +1,45 @@
 {
+  "disclaimer": "Illustrative examples — not verified client references. Replace with real case files supplied by UPUW.",
   "emptyMessage": "Portfolio coming soon — project photos and case studies to be supplied by the client.",
-  "projects": []
+  "projects": [
+    {
+      "id": "voirie-mendong",
+      "title": "Example — Mendong district roadworks",
+      "summary": "Illustration of urban road rehabilitation (non-certified data).",
+      "sector": "Public works",
+      "year": "TBD",
+      "location": "Yaoundé — area to be confirmed",
+      "thumb": "hero-construction.jpg",
+      "hero": "hero-construction.jpg",
+      "scope": "Structural coordination, networks, and finishes — exact scope to be documented with the client.",
+      "results": "Quantified outcomes to be supplied (TBD).",
+      "gallery": ["hero-construction.jpg", "about-architecture.jpg"]
+    },
+    {
+      "id": "batiment-admin",
+      "title": "Example — Administrative building extension",
+      "summary": "Illustration of structural work and envelope (non-certified data).",
+      "sector": "Building",
+      "year": "TBD",
+      "location": "Capital region — site TBD",
+      "thumb": "about-architecture.jpg",
+      "hero": "about-architecture.jpg",
+      "scope": "Structure, trade coordination, and phased schedule — to be validated.",
+      "results": "Performance indicators to be supplied (TBD).",
+      "gallery": ["about-architecture.jpg", "hero-about-visual.png"]
+    },
+    {
+      "id": "topo-drone",
+      "title": "Example — Drone survey mission",
+      "summary": "Illustration of aerial survey and DTM delivery (non-certified data).",
+      "sector": "Surveying",
+      "year": "TBD",
+      "location": "Study area TBD",
+      "thumb": "product-drone.jpg",
+      "hero": "product-drone.jpg",
+      "scope": "Drone acquisition, processing, and geomatic deliverables — detail TBD.",
+      "results": "Accuracy and typical lead times to document (TBD).",
+      "gallery": ["product-drone.jpg", "product-survey.jpg"]
+    }
+  ]
 }

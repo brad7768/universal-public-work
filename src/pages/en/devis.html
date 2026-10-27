@@ -27,6 +27,7 @@
               >
                 <input type="hidden" name="form-name" value="quote-request" />
                 <input type="hidden" name="page" value="/en/devis.html" />
+                <input type="hidden" name="product_id" id="qv-product-id" value="" />
                 <p class="sr-only" aria-hidden="true">
                   <label>Leave blank: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
                 </p>
@@ -58,6 +59,13 @@
                       <option value="etudes">Surveys &amp; topography</option>
                       <option value="equipement">Equipment / procurement</option>
                       <option value="autre">Other (specify)</option>
+                    </select>
+                  </div>
+                  <div class="form-row" id="qv-product-row" hidden>
+                    <label for="qv-product">Catalog product (optional)</label>
+                    <select id="qv-product" name="product_ref">
+                      <option value="">— None —</option>
+                      <!-- @product-options -->
                     </select>
                   </div>
                   <div class="form-row">

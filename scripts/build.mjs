@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
-const DIST = path.join(ROOT, "dist");
+const LOGO = "../assets/brand/logo-upuw-fond-blanc.jpg";
 
 const site = JSON.parse(fs.readFileSync(path.join(ROOT, "data/site.json"), "utf8"));
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "src/pages-manifest.json"), "utf8"));
@@ -85,7 +85,7 @@ function renderHeader(lang, meta, nav) {
         <div class="header-tier1">
           <div class="container header-inner">
             <a href="index.html" class="logo">
-              <img src="../assets/brand/upuw-logo.svg" width="160" height="44" alt="UPUW" />
+              <img src="${LOGO}" width="160" height="48" alt="UPUW" />
             </a>
             <nav class="nav-desktop" aria-label="${lang === "fr" ? "Navigation principale" : "Main navigation"}">
               ${primary}
@@ -138,7 +138,7 @@ function renderHeader(lang, meta, nav) {
         <div class="container footer-inner">
           <div class="footer-brand">
             <a href="index.html" class="footer-logo">
-              <img src="../assets/brand/upuw-logo.svg" width="140" height="38" alt="UPUW" />
+              <img src="${LOGO}" width="140" height="42" alt="UPUW" />
             </a>
             <span>${escapeHtml(nav.footer.tagline)}</span>
           </div>
@@ -159,20 +159,51 @@ function renderHeader(lang, meta, nav) {
   };
 }
 
-function renderProducts(lang, wa) {
-  const data = JSON.parse(read(path.join(ROOT, `data/products.${lang}.json`)));
+function loadProducts(lang) {
+  return JSON.parse(read(path.join(ROOT, `data/products.${lang}.json`)));
+}
+
+function loadProjects(lang) {
+  return JSON.parse(read(path.join(ROOT, `data/projects.${lang}.json`)));
+}
+
+function loadServices(lang) {
+  return JSON.parse(read(path.join(ROOT, `data/services.${lang}.json`)));
+}
+
+function productSheetHref(id) {
+  return `fiche-produit-${id}.html`;
+}
+
+function projectDetailHref(id) {
+  return `realisation-${id}.html`;
+}
+
+function serviceDetailHref(id) {
+  return `service-${id}.html`;
+}
+
+function renderProducts(lang, wa, { catalogLinks = false } = {}) {
+  const data = loadProducts(lang);
+  const sheetLabel = lang === "fr" ? "Voir la fiche" : "View sheet";
   return data.products
-    .map(
-      (p) => `<article class="product-card reveal">
+    .map((p) => {
+      const sheet = catalogLinks
+        ? `<a class="btn btn-primary" href="${productSheetHref(p.id)}">${escapeHtml(sheetLabel)}</a>`
+        : `<a class="btn btn-outline" href="${productSheetHref(p.id)}">${escapeHtml(sheetLabel)}</a>`;
+      return `<article class="product-card reveal">
                 <div class="product-media ${p.mediaClass}" role="presentation"></div>
                 <div class="product-body">
-                  <h3>${escapeHtml(p.name)}</h3>
+                  <h3><a href="${productSheetHref(p.id)}">${escapeHtml(p.name)}</a></h3>
                   <p>${escapeHtml(p.description)}</p>
                   <p class="product-price">${escapeHtml(p.priceLabel)}</p>
-                  <a class="btn btn-outline" href="https://wa.me/${wa}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.cta)}</a>
+                  <div class="card-actions">
+                    ${sheet}
+                    <a class="btn btn-outline" href="devis.html?product=${encodeURIComponent(p.id)}">${lang === "fr" ? "Devis" : "Quote"}</a>
+                  </div>
                 </div>
-              </article>`
-    )
+              </article>`;
+    })
     .join("\n              ");
 }
 
@@ -183,23 +214,65 @@ function renderProductOptions(lang) {
     .join("\n                  ");
 }
 
+function renderProjectsDisclaimer(lang) {
+  const data = loadProjects(lang);
+  if (!data.disclaimer || !data.projects.length) return "";
+  return `<p class="notice-banner reveal" role="note">${escapeHtml(data.disclaimer)}</p>`;
+}
+
 function renderProjects(lang, limit) {
-  const data = JSON.parse(read(path.join(ROOT, `data/projects.${lang}.json`)));
+  const data = loadProjects(lang);
   if (!data.projects.length) {
     return `<p class="empty-state reveal">${escapeHtml(data.emptyMessage)}</p>`;
   }
   const list = limit ? data.projects.slice(0, limit) : data.projects;
+  const cta = lang === "fr" ? "Voir la fiche" : "View case";
   return `<div class="project-grid">${list
     .map(
       (proj) => `<article class="project-card reveal">
-        <div class="project-card-media" style="background-image:url('../assets/images/${proj.thumb || "hero-construction.jpg"}')"></div>
-        <div class="project-card-body">
-          <h3>${escapeHtml(proj.title)}</h3>
-          <p>${escapeHtml(proj.summary || "")}</p>
-        </div>
+        <a class="project-card-link" href="${projectDetailHref(proj.id)}">
+          <div class="project-card-media" style="background-image:url('../assets/images/${proj.thumb || "hero-construction.jpg"}')"></div>
+          <div class="project-card-body">
+            <p class="project-card-meta">${escapeHtml(proj.sector || "")} · ${escapeHtml(proj.year || "")}</p>
+            <h3>${escapeHtml(proj.title)}</h3>
+            <p>${escapeHtml(proj.summary || "")}</p>
+            <span class="project-card-cta">${escapeHtml(cta)}</span>
+          </div>
+        </a>
       </article>`
     )
     .join("")}</div>`;
+}
+
+function renderFaq(lang) {
+  const data = JSON.parse(read(path.join(ROOT, `data/faq.${lang}.json`)));
+  return data.categories
+    .map(
+      (cat) => `<section class="faq-category reveal" id="faq-${escapeHtml(cat.id)}">
+        <h2>${escapeHtml(cat.title)}</h2>
+        <div class="faq-list">
+          ${(cat.items || [])
+            .map(
+              (item) => `<details class="faq-item">
+              <summary>${escapeHtml(item.q)}</summary>
+              <p>${escapeHtml(item.a)}</p>
+            </details>`
+            )
+            .join("\n          ")}
+        </div>
+      </section>`
+    )
+    .join("\n            ");
+}
+
+function renderCatalogIntro(lang) {
+  const data = loadProducts(lang);
+  return escapeHtml(data.catalogIntro || "");
+}
+
+function renderFaqIntro(lang) {
+  const data = JSON.parse(read(path.join(ROOT, `data/faq.${lang}.json`)));
+  return escapeHtml(data.intro || "");
 }
 
 function injectBlocks(content, lang, slug) {
@@ -207,33 +280,43 @@ function injectBlocks(content, lang, slug) {
   if (out.includes("<!-- @products -->")) {
     out = out.replace("<!-- @products -->", renderProducts(lang, site.whatsapp));
   }
+  if (out.includes("<!-- @products-catalog -->")) {
+    out = out.replace("<!-- @products-catalog -->", renderProducts(lang, site.whatsapp, { catalogLinks: true }));
+  }
+  if (out.includes("<!-- @catalog-intro -->")) {
+    out = out.replace("<!-- @catalog-intro -->", renderCatalogIntro(lang));
+  }
   if (out.includes("<!-- @product-options -->")) {
-    out = out.replace("<!-- @product-options -->", renderProductOptions(lang));
+    out = out.replaceAll("<!-- @product-options -->", renderProductOptions(lang));
   }
   if (out.includes("<!-- @projects-home -->")) {
     out = out.replace("<!-- @projects-home -->", renderProjects(lang, 3));
   }
+  if (out.includes("<!-- @projects-disclaimer -->")) {
+    out = out.replace("<!-- @projects-disclaimer -->", renderProjectsDisclaimer(lang));
+  }
   if (out.includes("<!-- @projects-full -->")) {
     out = out.replace("<!-- @projects-full -->", renderProjects(lang));
+  }
+  if (out.includes("<!-- @faq -->")) {
+    out = out.replace("<!-- @faq -->", renderFaq(lang));
+  }
+  if (out.includes("<!-- @faq-intro -->")) {
+    out = out.replace("<!-- @faq-intro -->", renderFaqIntro(lang));
   }
   return out;
 }
 
-function renderPage(lang, pageDef) {
-  const meta = { slug: pageDef.slug, ...pageDef[lang] };
-  const nav = JSON.parse(read(path.join(ROOT, `data/nav.${lang}.json`)));
-  const contentPath = path.join(ROOT, "src/pages", lang, pageDef.slug.replace(/\.html$/, "") + ".html");
-  let content = read(contentPath);
-  content = injectBlocks(content, lang, pageDef.slug);
+function canonicalFor(lang, slug) {
+  return slug === "index.html" ? `${site.domain}/${lang}/` : `${site.domain}/${lang}/${slug}`;
+}
 
+function renderPageShell(lang, meta, content) {
+  const nav = JSON.parse(read(path.join(ROOT, `data/nav.${lang}.json`)));
   const { header, footer } = renderHeader(lang, meta, nav);
-  const canonical = `${site.domain}/${lang}/${pageDef.slug === "index.html" ? "" : pageDef.slug}`.replace(/\/$/, "/");
-  const canonicalTag =
-    pageDef.slug === "index.html"
-      ? `${site.domain}/${lang}/`
-      : `${site.domain}/${lang}/${pageDef.slug}`;
-  const altFr = `${site.domain}/fr/${pageDef.slug === "index.html" ? "" : pageDef.slug}`.replace(/\/$/, "/");
-  const altEn = `${site.domain}/en/${pageDef.slug === "index.html" ? "" : pageDef.slug}`.replace(/\/$/, "/");
+  const canonicalTag = canonicalFor(lang, meta.slug);
+  const altFr = canonicalFor("fr", meta.slug);
+  const altEn = canonicalFor("en", meta.slug);
 
   const fab = `<a
       class="fab-wa"
@@ -287,20 +370,184 @@ ${content}
 `;
 }
 
-function buildSitemap() {
+function renderPage(lang, pageDef) {
+  const meta = { slug: pageDef.slug, ...pageDef[lang] };
+  const contentPath = path.join(ROOT, "src/pages", lang, pageDef.slug.replace(/\.html$/, "") + ".html");
+  let content = read(contentPath);
+  content = injectBlocks(content, lang, pageDef.slug);
+  return renderPageShell(lang, meta, content);
+}
+
+function renderProjectDetailPage(lang, proj, allProjects) {
+  const slug = projectDetailHref(proj.id);
+  const idx = allProjects.findIndex((p) => p.id === proj.id);
+  const prev = idx > 0 ? allProjects[idx - 1] : null;
+  const next = idx < allProjects.length - 1 ? allProjects[idx + 1] : null;
+  const navPrev = lang === "fr" ? "Projet précédent" : "Previous project";
+  const navNext = lang === "fr" ? "Projet suivant" : "Next project";
+  const back = lang === "fr" ? "Toutes les réalisations" : "All projects";
+  const gallery = (proj.gallery || [proj.hero])
+    .map(
+      (img) =>
+        `<figure class="detail-gallery-item"><img src="../assets/images/${escapeHtml(img)}" alt="" loading="lazy" /></figure>`
+    )
+    .join("\n              ");
+  const content = `
+        <section class="hero hero--page hero--detail">
+          <div class="container hero-inner">
+            <p class="hero-badge">${escapeHtml(proj.sector || "")}</p>
+            <h1>${escapeHtml(proj.title)}</h1>
+            <p class="lead">${escapeHtml(proj.summary || "")}</p>
+          </div>
+        </section>
+
+        <section class="section detail-hero-media" style="padding-top:0">
+          <div class="container">
+            <div class="detail-hero-image" style="background-image:url('../assets/images/${escapeHtml(proj.hero || proj.thumb)}')"></div>
+            <p class="notice-banner" role="note">${escapeHtml(loadProjects(lang).disclaimer || "")}</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container detail-grid">
+            <article class="detail-main reveal">
+              <h2>${lang === "fr" ? "Contexte &amp; périmètre" : "Context &amp; scope"}</h2>
+              <p>${escapeHtml(proj.scope || "")}</p>
+              <h2>${lang === "fr" ? "Résultats" : "Outcomes"}</h2>
+              <p>${escapeHtml(proj.results || "")}</p>
+              <div class="detail-gallery">${gallery}</div>
+            </article>
+            <aside class="detail-aside reveal">
+              <dl class="detail-facts">
+                <div><dt>${lang === "fr" ? "Lieu" : "Location"}</dt><dd>${escapeHtml(proj.location || "TBD")}</dd></div>
+                <div><dt>${lang === "fr" ? "Année" : "Year"}</dt><dd>${escapeHtml(proj.year || "TBD")}</dd></div>
+                <div><dt>${lang === "fr" ? "Secteur" : "Sector"}</dt><dd>${escapeHtml(proj.sector || "TBD")}</dd></div>
+              </dl>
+              <a class="btn btn-primary" href="devis.html">${lang === "fr" ? "Demander un devis" : "Request a quote"}</a>
+            </aside>
+          </div>
+        </section>
+
+        <nav class="container detail-pager reveal" aria-label="${lang === "fr" ? "Navigation portfolio" : "Portfolio navigation"}">
+          ${prev ? `<a href="${projectDetailHref(prev.id)}">← ${escapeHtml(navPrev)}</a>` : "<span></span>"}
+          <a href="realisations.html">${escapeHtml(back)}</a>
+          ${next ? `<a href="${projectDetailHref(next.id)}">${escapeHtml(navNext)} →</a>` : "<span></span>"}
+        </nav>`;
+
+  const meta = {
+    slug,
+    title: `${proj.title} | UPUW`,
+    description: proj.summary || "",
+    activePrimary: "realisations",
+    mainId: lang === "fr" ? "contenu-principal" : "main-content",
+  };
+  return renderPageShell(lang, meta, content);
+}
+
+function renderProductDetailPage(lang, product) {
+  const slug = productSheetHref(product.id);
+  const specs = (product.specs || [])
+    .map((s) => `<div><dt>${escapeHtml(s.label)}</dt><dd>${escapeHtml(s.value)}</dd></div>`)
+    .join("\n                ");
+  const content = `
+        <section class="hero hero--page hero--buy">
+          <div class="container hero-inner">
+            <p class="hero-badge">${lang === "fr" ? "Fiche produit" : "Product sheet"}</p>
+            <h1>${escapeHtml(product.name)}</h1>
+            <p class="lead">${escapeHtml(product.longDescription || product.description)}</p>
+          </div>
+        </section>
+
+        <section class="section" style="padding-top:0">
+          <div class="container detail-grid">
+            <div class="product-detail-media ${escapeHtml(product.mediaClass)}" role="presentation"></div>
+            <aside class="detail-aside reveal">
+              <p class="product-price">${escapeHtml(product.priceLabel)}</p>
+              <dl class="detail-facts">${specs}</dl>
+              <a class="btn btn-primary" href="devis.html?product=${encodeURIComponent(product.id)}">${lang === "fr" ? "Demander un devis" : "Request a quote"}</a>
+              <a class="btn btn-outline" href="equipement.html#commande">${lang === "fr" ? "Formulaire procurement" : "Procurement form"}</a>
+              <a class="btn btn-outline" href="catalogue-equipements.html">${lang === "fr" ? "Retour catalogue" : "Back to catalog"}</a>
+            </aside>
+          </div>
+        </section>`;
+
+  const meta = {
+    slug,
+    title: `${product.name} | UPUW`,
+    description: product.description,
+    activePrimary: "equipement",
+    mainId: lang === "fr" ? "contenu-principal" : "main-content",
+  };
+  return renderPageShell(lang, meta, content);
+}
+
+function renderServiceDetailPage(lang, service) {
+  const slug = serviceDetailHref(service.id);
+  const sections = (service.sections || [])
+    .map(
+      (s) => `<article class="card reveal">
+        <h2>${escapeHtml(s.heading)}</h2>
+        <p>${escapeHtml(s.body)}</p>
+      </article>`
+    )
+    .join("\n            ");
+  const content = `
+        <section class="hero hero--page ${escapeHtml(service.heroClass || "hero--page")}">
+          <div class="container hero-inner">
+            <p class="hero-badge">${escapeHtml(service.badge || "")}</p>
+            <h1>${escapeHtml(service.title)}</h1>
+            <p class="lead">${escapeHtml(service.summary || "")}</p>
+          </div>
+        </section>
+
+        <section class="section" style="padding-top:0">
+          <div class="container stack-cards">
+            ${sections}
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container cta-band reveal">
+            <h2>${lang === "fr" ? "Parler de ce service" : "Discuss this service"}</h2>
+            <div class="cta-buttons">
+              <a class="btn btn-primary" href="devis.html">${lang === "fr" ? "Demander un devis" : "Request a quote"}</a>
+              <a class="btn btn-outline" href="${escapeHtml(service.relatedHref || "index.html")}">${escapeHtml(service.relatedLabel || "")}</a>
+            </div>
+          </div>
+        </section>`;
+
+  const meta = {
+    slug,
+    title: `${service.title} | UPUW`,
+    description: service.summary || "",
+    activePrimary: service.id === "construction" ? "construction" : null,
+    activeSecondary: service.id === "ingenierie" || service.id === "topographie" ? service.id : null,
+    mainId: lang === "fr" ? "contenu-principal" : "main-content",
+  };
+  return renderPageShell(lang, meta, content);
+}
+
+function collectSitemapUrls() {
   const urls = [];
   for (const lang of ["fr", "en"]) {
     for (const page of manifest) {
-      const loc =
-        page.slug === "index.html"
-          ? `${site.domain}/${lang}/`
-          : `${site.domain}/${lang}/${page.slug}`;
-      urls.push(`  <url><loc>${loc}</loc></url>`);
+      urls.push(canonicalFor(lang, page.slug));
     }
+    const projects = loadProjects(lang).projects;
+    for (const p of projects) urls.push(canonicalFor(lang, projectDetailHref(p.id)));
+    const products = loadProducts(lang).products;
+    for (const p of products) urls.push(canonicalFor(lang, productSheetHref(p.id)));
+    const services = loadServices(lang).services;
+    for (const s of services) urls.push(canonicalFor(lang, serviceDetailHref(s.id)));
   }
+  return urls;
+}
+
+function buildSitemap() {
+  const urls = collectSitemapUrls();
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.join("\n")}
+${urls.map((loc) => `  <url><loc>${loc}</loc></url>`).join("\n")}
 </urlset>
 `;
 }
@@ -317,26 +564,39 @@ function buildRedirects() {
 `;
 }
 
-// Clean dist
-fs.rmSync(DIST, { recursive: true, force: true });
-fs.mkdirSync(DIST, { recursive: true });
-
-for (const dir of ["css", "js", "assets", "data"]) {
-  copyDir(path.join(ROOT, dir), path.join(DIST, dir));
+for (const lang of ["fr", "en"]) {
+  fs.rmSync(path.join(ROOT, lang), { recursive: true, force: true });
 }
 
-for (const file of ["index.html", "404.html", "robots.txt"]) {
-  fs.copyFileSync(path.join(ROOT, file), path.join(DIST, file));
-}
+write(path.join(ROOT, "sitemap.xml"), buildSitemap());
+write(path.join(ROOT, "_redirects"), buildRedirects());
 
-write(path.join(DIST, "sitemap.xml"), buildSitemap());
-write(path.join(DIST, "_redirects"), buildRedirects());
+let pageCount = 0;
 
 for (const page of manifest) {
   for (const lang of ["fr", "en"]) {
     const html = renderPage(lang, page);
-    write(path.join(DIST, lang, page.slug), html);
+    write(path.join(ROOT, lang, page.slug), html);
+    pageCount += 1;
   }
 }
 
-console.log(`Built ${manifest.length * 2} pages → ${DIST}`);
+for (const lang of ["fr", "en"]) {
+  const projects = loadProjects(lang).projects;
+  for (const proj of projects) {
+    write(path.join(ROOT, lang, projectDetailHref(proj.id)), renderProjectDetailPage(lang, proj, projects));
+    pageCount += 1;
+  }
+  const products = loadProducts(lang).products;
+  for (const product of products) {
+    write(path.join(ROOT, lang, productSheetHref(product.id)), renderProductDetailPage(lang, product));
+    pageCount += 1;
+  }
+  const services = loadServices(lang).services;
+  for (const service of services) {
+    write(path.join(ROOT, lang, serviceDetailHref(service.id)), renderServiceDetailPage(lang, service));
+    pageCount += 1;
+  }
+}
+
+console.log(`Built ${pageCount} pages → ${ROOT}/{fr,en}/`);

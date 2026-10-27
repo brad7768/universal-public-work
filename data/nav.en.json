@@ -18,8 +18,10 @@
   "footer": {
     "tagline": "Architectural precision, global reliability.",
     "legal": [
-      { "label": "Policies", "href": "politiques.html" },
-      { "label": "Request a quote", "href": "devis.html" }
+      { "label": "FAQ", "href": "faq.html" },
+      { "label": "Privacy", "href": "confidentialite.html" },
+      { "label": "Legal notice", "href": "mentions-legales.html" },
+      { "label": "Policies", "href": "politiques.html" }
     ],
     "credit": "by edgewebz"
   },

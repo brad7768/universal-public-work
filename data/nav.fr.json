@@ -18,8 +18,10 @@
   "footer": {
     "tagline": "Précision architecturale, fiabilité mondiale.",
     "legal": [
-      { "label": "Politiques", "href": "politiques.html" },
-      { "label": "Demander un devis", "href": "devis.html" }
+      { "label": "FAQ", "href": "faq.html" },
+      { "label": "Confidentialité", "href": "confidentialite.html" },
+      { "label": "Mentions légales", "href": "mentions-legales.html" },
+      { "label": "Politiques", "href": "politiques.html" }
     ],
     "credit": "by edgewebz"
   },
