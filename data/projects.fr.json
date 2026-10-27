@@ -1,4 +1,42 @@
 {
   "emptyMessage": "Portfolio en cours de publication — photos et fiches projet à fournir par le client.",
-  "projects": []
+  "placeholderNote": "Visuels illustratifs (photos stock du dépôt) — à remplacer par les réalisations client.",
+  "projects": [
+    {
+      "id": "residence-r1",
+      "title": "Maison résidentielle R+1",
+      "summary": "Programme résidentiel — fiche client à compléter.",
+      "location": "Yaoundé, Cameroun",
+      "thumb": "about-architecture.jpg",
+      "category": "Résidentiel",
+      "placeholder": true
+    },
+    {
+      "id": "voirie",
+      "title": "Aménagement de voirie",
+      "summary": "Travaux publics — visuel illustratif en attente de validation.",
+      "location": "Yaoundé, Cameroun",
+      "thumb": "hero-construction.jpg",
+      "category": "Travaux publics",
+      "placeholder": true
+    },
+    {
+      "id": "chantier-cadre",
+      "title": "Chantier en cours",
+      "summary": "Gros œuvre — photo de référence interne, non contractualisée.",
+      "location": "Région capitale",
+      "thumb": "about-hero-planning.jpg",
+      "category": "Construction",
+      "placeholder": true
+    },
+    {
+      "id": "topo-drone",
+      "title": "Levé topographique drone",
+      "summary": "Études & géomatique — illustration matériel UPUW.",
+      "location": "Yaoundé, Cameroun",
+      "thumb": "product-drone.jpg",
+      "category": "Études",
+      "placeholder": true
+    }
+  ]
 }

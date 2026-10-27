@@ -1,41 +1,77 @@
 
-        <section class="hero hero--page">
-          <div class="container hero-inner">
-            <p class="hero-badge">Coordonnées</p>
-            <h1>Contact</h1>
-            <p class="lead">Marché Mendong, Yaoundé, Cameroun</p>
+        <section class="hero hero--page hero--contact hero--cinematic">
+          <div class="container hero-inner hero-inner--left">
+            <p class="hero-badge">Contactez-nous</p>
+            <h1 class="hero-title-brand">
+              Parlons de <span class="text-accent">votre projet</span>.<br />
+              Nous sommes à votre écoute.
+            </h1>
+            <p class="hero-sub hero-sub--light">Marché Mendong, Yaoundé — WhatsApp privilégié pour les demandes urgentes.</p>
+          </div>
+          <ul class="hero-pillars container" aria-label="Engagements contact">
+            <li>Réponse rapide</li>
+            <li>Équipe à l’écoute</li>
+            <li>Informations claires</li>
+            <li>Suivi jusqu’à la réalisation</li>
+          </ul>
+        </section>
+
+        <!-- @breadcrumbs:Contact -->
+
+        <section class="section" style="padding-top: 0" aria-labelledby="coordonnees">
+          <div class="container">
+            <div class="section-head reveal">
+              <p class="section-kicker">Nos coordonnées</p>
+              <h2 id="coordonnees">Plusieurs moyens pour nous joindre</h2>
+            </div>
+            <div class="contact-cards">
+              <article class="contact-card reveal">
+                <h3>Téléphones</h3>
+                <p><a href="tel:+237659432516">+237 659 432 516</a><br /><a href="tel:+237654804123">+237 654 804 123</a></p>
+                <a class="card-link" href="https://wa.me/237659432516">WhatsApp →</a>
+              </article>
+              <article class="contact-card reveal">
+                <h3>Courriel</h3>
+                <p><a href="mailto:universalpublicworks@gmail.com">universalpublicworks@gmail.com</a></p>
+              </article>
+              <article class="contact-card reveal">
+                <h3>Adresse</h3>
+                <p>Marché Mendong, Yaoundé, Cameroun</p>
+                <a class="card-link" href="#carte">Voir sur la carte →</a>
+              </article>
+              <article class="contact-card reveal">
+                <h3>Horaires</h3>
+                <p>Lun.–Sam. 8h–18h · Dim. sur rendez-vous (à confirmer client).</p>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section class="section" style="padding-top: 0">
-          <div class="container contact-grid">
-            <article class="card reveal">
-              <h2>WhatsApp &amp; téléphone</h2>
-              <p>
-                <a href="https://wa.me/237659432516" target="_blank" rel="noopener noreferrer">+237 659 432 516</a>
-              </p>
-              <p class="muted">Canal privilégié pour demandes urgentes et devis express.</p>
-            </article>
-            <article class="card reveal">
+        <section class="section section--muted" id="carte">
+          <div class="container contact-split reveal">
+            <div class="contact-split-form">
               <h2>Demande structurée</h2>
-              <p>Pour cadrer un projet (type, budget, délais), utilisez le formulaire de devis.</p>
+              <p>Pour cadrer type de projet, budget et délais, utilisez le formulaire de devis (Netlify Forms à activer).</p>
               <a class="btn btn-primary" href="devis.html">Demander un devis</a>
-            </article>
-            <article class="card reveal">
-              <h2>Réseaux</h2>
-              <p>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                ·
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              </p>
-              <p class="muted">URLs à remplacer par les profils officiels du client.</p>
-            </article>
+            </div>
+            <div class="map-embed">
+              <iframe
+                title="Carte — Marché Mendong, Yaoundé"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=11.48%2C3.82%2C11.52%2C3.86&amp;layer=mapnik&amp;marker=3.84%2C11.50"
+              ></iframe>
+              <p class="field-hint">Position approximative — coordonnées exactes à valider avec le client.</p>
+            </div>
           </div>
         </section>
 
-        <section class="section section--muted">
-          <div class="container reveal">
-            <h2>Carte</h2>
-            <p class="muted">Intégration carte (OpenStreetMap ou autre) — à valider en Passe 4.</p>
+        <section class="section" aria-labelledby="faq-contact">
+          <div class="container">
+            <div class="section-head reveal">
+              <p class="section-kicker">Questions fréquentes</p>
+              <h2 id="faq-contact">Vos questions, nos réponses</h2>
+            </div>
+            <p class="reveal muted">FAQ complète depuis JSON — Passe 3. Consultez <a href="politiques.html">politiques</a> en attendant.</p>
           </div>
         </section>

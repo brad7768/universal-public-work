@@ -49,15 +49,15 @@
     "fr": {
       "title": "Études & topographie | UPUW",
       "description": "Plans 2D/3D, topographie drone, bornage et géomatique pour sécuriser vos projets.",
-      "activePrimary": null,
-      "activeSecondary": "ingenierie",
+      "activePrimary": "etudes",
+      "activeSecondary": null,
       "mainId": "contenu-principal"
     },
     "en": {
       "title": "Surveys & topography | UPUW",
       "description": "2D/3D plans, drone surveying, boundary work, and geomatics to de-risk your projects.",
-      "activePrimary": null,
-      "activeSecondary": "ingenierie",
+      "activePrimary": "etudes",
+      "activeSecondary": null,
       "mainId": "main-content"
     }
   },

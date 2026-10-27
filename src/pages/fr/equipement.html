@@ -1,28 +1,49 @@
 
-        <section class="hero hero--page hero--buy">
-          <div class="container hero-inner">
-            <p class="hero-badge">Approvisionnement industriel</p>
-            <h1 class="hero-title-brand">Équipement &amp; procurement</h1>
-            <p class="lead" style="margin-top: 1rem">
-              Centralisez l’achat d’instruments haute précision et de composants critiques. Chaque position est cotée «&nbsp;sur
-              devis&nbsp;» et validée par notre équipe locale.
+        <section class="hero hero--page hero--buy hero--cinematic">
+          <div class="container hero-inner hero-inner--left">
+            <p class="hero-badge">Location et vente d’équipements</p>
+            <h1 class="hero-title-brand">
+              Un matériel fiable<br />
+              <span class="text-accent">pour vos chantiers</span>
+            </h1>
+            <p class="lead hero-sub--light">
+              Centralisez l’achat d’instruments haute précision — chaque position est cotée « sur devis » et validée par
+              notre équipe locale.
             </p>
+            <div class="hero-ctas hero-ctas--left">
+              <a class="btn btn-primary" href="#commande">Demander un devis</a>
+              <a class="btn btn-outline btn-outline--light" href="#catalogue-fr">Voir le catalogue</a>
+            </div>
           </div>
         </section>
 
+        <!-- @breadcrumbs:Équipements -->
+
         <section class="section" style="padding-top: 0" aria-labelledby="catalogue-fr">
           <div class="container">
-            <h2 id="catalogue-fr" class="sr-only">Produits phares</h2>
+            <div class="section-head reveal">
+              <p class="section-kicker">Nos catégories</p>
+              <h2 id="catalogue-fr">Des équipements performants</h2>
+            </div>
             <div class="product-grid">
               <!-- @products -->
             </div>
           </div>
         </section>
 
-        <section class="container" aria-labelledby="form-titre-fr" id="commande">
+        <section class="section section--blue" aria-labelledby="accompagnement-eq">
+          <div class="container values-grid values-grid--4 reveal">
+            <article class="value-tile"><strong>Matériel fiable</strong><span>Contrôle et traçabilité.</span></article>
+            <article class="value-tile"><strong>Conseils personnalisés</strong><span>Équipe locale Yaoundé.</span></article>
+            <article class="value-tile"><strong>Assistance technique</strong><span>Support et maintenance TBD.</span></article>
+            <article class="value-tile"><strong>Disponibilité</strong><span>Stock à confirmer avec le client.</span></article>
+          </div>
+        </section>
+
+        <section class="container section" aria-labelledby="form-titre-fr" id="commande">
           <div class="procure-panel reveal">
-            <h2 id="form-titre-fr">Initier l’approvisionnement</h2>
-            <p class="sub">Pré-remplissez les champs puis envoyez le message officiel depuis WhatsApp.</p>
+            <h2 id="form-titre-fr">Demande de devis — équipements</h2>
+            <p class="sub">Soumission Netlify + ouverture WhatsApp — pas de message de succès simulé.</p>
             <form
               id="procure-form"
               name="procurement"
@@ -59,8 +80,8 @@
                 <label for="pf-note">Contexte projet (facultatif)</label>
                 <textarea id="pf-note" name="note" placeholder="Lieu de livraison, délais…"></textarea>
               </div>
-              <p class="field-hint">Transmission via WhatsApp officiel&nbsp;: +237&nbsp;659&nbsp;432&nbsp;516</p>
-              <button type="submit" class="btn btn-primary">Commander via WhatsApp</button>
+              <p class="field-hint">Transmission via WhatsApp officiel : +237 659 432 516</p>
+              <button type="submit" class="btn btn-primary">Envoyer via WhatsApp</button>
             </form>
           </div>
         </section>

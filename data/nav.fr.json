@@ -2,24 +2,32 @@
   "skipLink": "Aller au contenu principal",
   "primary": [
     { "id": "home", "label": "Accueil", "href": "index.html" },
-    { "id": "construction", "label": "Construction", "href": "construction.html" },
-    { "id": "realisations", "label": "Réalisations", "href": "realisations.html" },
-    { "id": "equipement", "label": "Équipement", "href": "equipement.html" },
     { "id": "about", "label": "À propos", "href": "a-propos.html" },
+    { "id": "construction", "label": "Construction", "href": "construction.html" },
+    { "id": "etudes", "label": "Études & topographie", "href": "etudes-topographie.html" },
+    { "id": "equipement", "label": "Équipements", "href": "equipement.html" },
+    { "id": "realisations", "label": "Réalisations", "href": "realisations.html" },
     { "id": "contact", "label": "Contact", "href": "contact.html" }
   ],
   "secondaryLabel": "Expertises",
-  "secondary": [
-    { "id": "ingenierie", "label": "Ingénierie & plans", "href": "etudes-topographie.html#ingenierie" },
-    { "id": "topographie", "label": "Topographie", "href": "etudes-topographie.html#topographie" },
-    { "id": "expertise", "label": "Expertise", "href": "construction.html#expertise" }
-  ],
+  "secondary": [],
   "cta": { "label": "Demander un devis", "href": "devis.html" },
   "footer": {
-    "tagline": "Précision architecturale, fiabilité mondiale.",
+    "tagline": "Construire aujourd’hui. Bâtir pour demain.",
+    "description": "Entrepreneur général — construction, études techniques et équipements à Yaoundé et dans la région de la capitale nationale.",
+    "quickLinksLabel": "Liens rapides",
+    "servicesLabel": "Nos services",
+    "contactLabel": "Contact",
+    "services": [
+      { "label": "Construction de bâtiments", "href": "construction.html" },
+      { "label": "Travaux publics", "href": "construction.html" },
+      { "label": "Plans 2D / 3D", "href": "etudes-topographie.html" },
+      { "label": "Topographie & bornage", "href": "etudes-topographie.html" },
+      { "label": "Location d’équipements", "href": "equipement.html" }
+    ],
     "legal": [
-      { "label": "Politiques", "href": "politiques.html" },
-      { "label": "Demander un devis", "href": "devis.html" }
+      { "label": "Politique de confidentialité", "href": "politiques.html#confidentialite" },
+      { "label": "Mentions légales", "href": "politiques.html#mentions" }
     ],
     "credit": "by edgewebz"
   },

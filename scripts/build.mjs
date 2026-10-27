@@ -69,31 +69,88 @@ function renderHeader(lang, meta, nav) {
     })
     .join("\n          ");
 
-  const mobileSecondary = nav.secondary
-    .map((item) => {
-      const isActive = item.id === meta.activeSecondary;
-      return `<a href="${item.href}"${isActive ? ' class="is-active"' : ""}>${escapeHtml(item.label)}</a>`;
-    })
-    .join("\n            ");
+  const mobileSecondary =
+    nav.secondary.length > 0
+      ? nav.secondary
+          .map((item) => {
+            const isActive = item.id === meta.activeSecondary;
+            return `<a href="${item.href}"${isActive ? ' class="is-active"' : ""}>${escapeHtml(item.label)}</a>`;
+          })
+          .join("\n            ")
+      : "";
+
+  const mobileSecondaryBlock = mobileSecondary
+    ? `<p class="mobile-nav-heading">${escapeHtml(nav.secondaryLabel)}</p>
+          <div class="mobile-nav-secondary">
+            ${mobileSecondary}
+          </div>`
+    : "";
+
+  const tier2Block =
+    secondary.trim().length > 0
+      ? `<div class="header-tier2" aria-label="${lang === "fr" ? "Expertises" : "Expertise areas"}">
+          <div class="container header-tier2-inner">
+            ${secondary}
+          </div>
+        </div>`
+      : "";
+
+  const footerQuick = nav.primary
+    .map((item) => `<li><a href="${item.href}">${escapeHtml(item.label)}</a></li>`)
+    .join("\n                ");
+
+  const footerServices = (nav.footer.services || [])
+    .map((item) => `<li><a href="${item.href}">${escapeHtml(item.label)}</a></li>`)
+    .join("\n                ");
 
   const footerLegal = nav.footer.legal
     .map((l) => `<a href="${l.href}">${escapeHtml(l.label)}</a>`)
-    .join("\n            ");
+    .join("\n              ");
+
+  const countryLabel = lang === "fr" ? "Cameroun" : "Cameroon";
+  const logoAlt =
+    lang === "fr"
+      ? "Universal Public Works — logo officiel"
+      : "Universal Public Works — official logo";
 
   return {
-    header: `<header class="site-header">
+    header: `<div class="top-bar">
+        <div class="container top-bar-inner">
+          <div class="top-bar-contact">
+            <span class="top-bar-item">${escapeHtml(site.address.street)}, ${escapeHtml(site.address.locality)}, ${countryLabel}</span>
+            <a class="top-bar-item" href="tel:${site.telephone.replace(/\s/g, "")}">${escapeHtml(site.telephone)}</a>
+            ${
+              site.telephoneAlt
+                ? `<a class="top-bar-item top-bar-item--alt" href="tel:${site.telephoneAlt.replace(/\s/g, "")}">${escapeHtml(site.telephoneAlt)}</a>`
+                : ""
+            }
+            ${
+              site.email
+                ? `<a class="top-bar-item" href="mailto:${escapeHtml(site.email)}">${escapeHtml(site.email)}</a>`
+                : ""
+            }
+          </div>
+          <div class="top-bar-meta">
+            <div class="top-bar-social" aria-label="${lang === "fr" ? "Réseaux sociaux" : "Social media"}">
+              <a href="${site.social.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="${site.social.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="${site.social.youtube}" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </div>
+            <div class="lang-switch lang-switch--top" role="navigation" aria-label="${escapeHtml(nav.langLabel)}">
+              <a href="${frHref}" class="${lang === "fr" ? "is-active" : ""}" lang="fr" hreflang="fr">FR</a>
+              <a href="${enHref}" class="${lang === "en" ? "is-active" : ""}" lang="en" hreflang="en">EN</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <header class="site-header">
         <div class="header-tier1">
           <div class="container header-inner">
             <a href="index.html" class="logo">
-              <img src="../assets/brand/upuw-logo.svg" width="160" height="44" alt="UPUW" />
+              <img src="../assets/brand/upuw-logo.jpg" width="160" height="80" alt="${logoAlt}" />
             </a>
             <nav class="nav-desktop" aria-label="${lang === "fr" ? "Navigation principale" : "Main navigation"}">
               ${primary}
-              <div class="lang-switch" role="navigation" aria-label="${escapeHtml(nav.langLabel)}">
-                <span class="sr-only">${escapeHtml(nav.langLabel)}</span>
-                <a href="${frHref}" class="${lang === "fr" ? "is-active" : ""}" lang="fr" hreflang="fr">FR</a>
-                <a href="${enHref}" class="${lang === "en" ? "is-active" : ""}" lang="en" hreflang="en">EN</a>
-              </div>
             </nav>
             <div class="header-actions">
               <a class="btn btn-primary btn-header-cta" href="${nav.cta.href}">${escapeHtml(nav.cta.label)}</a>
@@ -111,19 +168,12 @@ function renderHeader(lang, meta, nav) {
             </div>
           </div>
         </div>
-        <div class="header-tier2" aria-label="${lang === "fr" ? "Expertises" : "Expertise areas"}">
-          <div class="container header-tier2-inner">
-            ${secondary}
-          </div>
-        </div>
+        ${tier2Block}
       </header>
       <aside class="nav-mobile" id="mobile-drawer" aria-hidden="true" aria-label="${lang === "fr" ? "Menu mobile" : "Mobile menu"}">
         <nav>
           ${mobilePrimary}
-          <p class="mobile-nav-heading">${escapeHtml(nav.secondaryLabel)}</p>
-          <div class="mobile-nav-secondary">
-            ${mobileSecondary}
-          </div>
+          ${mobileSecondaryBlock}
         </nav>
         <div class="mobile-nav-footer">
           <div class="mobile-lang" role="group" aria-label="${escapeHtml(nav.langLabel)}">
@@ -131,28 +181,64 @@ function renderHeader(lang, meta, nav) {
             <a href="${enHref}" class="${lang === "en" ? "is-active" : ""}" lang="en">English</a>
           </div>
           <a class="btn btn-primary" href="${nav.cta.href}">${escapeHtml(nav.cta.label)}</a>
-          <a class="btn btn-outline" href="https://wa.me/${site.whatsapp}" target="_blank" rel="noopener noreferrer">WhatsApp +237 659 432 516</a>
+          <a class="btn btn-outline" href="https://wa.me/${site.whatsapp}" target="_blank" rel="noopener noreferrer">WhatsApp ${escapeHtml(site.telephone)}</a>
         </div>
       </aside>`,
     footer: `<footer class="site-footer">
-        <div class="container footer-inner">
-          <div class="footer-brand">
+        <div class="container footer-grid">
+          <div class="footer-col footer-brand">
             <a href="index.html" class="footer-logo">
-              <img src="../assets/brand/upuw-logo.svg" width="140" height="38" alt="UPUW" />
+              <img src="../assets/brand/upuw-logo.jpg" width="140" height="70" alt="${logoAlt}" />
             </a>
-            <span>${escapeHtml(nav.footer.tagline)}</span>
+            <p class="footer-tagline">${escapeHtml(nav.footer.tagline)}</p>
+            <p class="footer-desc">${escapeHtml(nav.footer.description || "")}</p>
           </div>
-          <div class="footer-center">${escapeHtml(site.address.street)}, ${escapeHtml(site.address.locality)}, ${lang === "fr" ? "Cameroun" : "Cameroon"}</div>
-          <nav class="footer-links" aria-label="${lang === "fr" ? "Liens de pied de page" : "Footer links"}">
-            ${footerLegal}
-            <a href="contact.html">${lang === "fr" ? "Contact" : "Contact"}</a>
-            <a href="https://wa.me/${site.whatsapp}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a href="${site.social.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="${site.social.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </nav>
-          <p class="credit">
-            <a href="https://edgewebz.com" target="_blank" rel="noopener noreferrer">${escapeHtml(nav.footer.credit)}</a>
-          </p>
+          <div class="footer-col">
+            <h2 class="footer-heading">${escapeHtml(nav.footer.quickLinksLabel || (lang === "fr" ? "Liens rapides" : "Quick links"))}</h2>
+            <ul class="footer-list">
+              ${footerQuick}
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h2 class="footer-heading">${escapeHtml(nav.footer.servicesLabel || (lang === "fr" ? "Nos services" : "Our services"))}</h2>
+            <ul class="footer-list">
+              ${footerServices}
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h2 class="footer-heading">${escapeHtml(nav.footer.contactLabel || "Contact")}</h2>
+            <ul class="footer-list footer-list--plain">
+              <li>${escapeHtml(site.address.street)}, ${escapeHtml(site.address.locality)}</li>
+              <li><a href="tel:${site.telephone.replace(/\s/g, "")}">${escapeHtml(site.telephone)}</a></li>
+              ${
+                site.telephoneAlt
+                  ? `<li><a href="tel:${site.telephoneAlt.replace(/\s/g, "")}">${escapeHtml(site.telephoneAlt)}</a></li>`
+                  : ""
+              }
+              ${
+                site.email
+                  ? `<li><a href="mailto:${escapeHtml(site.email)}">${escapeHtml(site.email)}</a></li>`
+                  : ""
+              }
+              <li><a href="${site.domain}">${site.domain.replace(/^https:\/\//, "")}</a></li>
+            </ul>
+            <div class="footer-social">
+              <a href="${site.social.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="${site.social.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="${site.social.youtube}" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="container footer-bottom-inner">
+            <p>© ${new Date().getFullYear()} Universal Public Works. ${lang === "fr" ? "Tous droits réservés." : "All rights reserved."}</p>
+            <nav class="footer-legal" aria-label="${lang === "fr" ? "Mentions légales" : "Legal"}">
+              ${footerLegal}
+            </nav>
+            <p class="credit">
+              <a href="https://edgewebz.com" target="_blank" rel="noopener noreferrer">${escapeHtml(nav.footer.credit)}</a>
+            </p>
+          </div>
         </div>
       </footer>`,
     pagePath,
@@ -189,12 +275,27 @@ function renderProjects(lang, limit) {
     return `<p class="empty-state reveal">${escapeHtml(data.emptyMessage)}</p>`;
   }
   const list = limit ? data.projects.slice(0, limit) : data.projects;
-  return `<div class="project-grid">${list
+  const note = data.placeholderNote
+    ? `<p class="placeholder-note reveal">${escapeHtml(data.placeholderNote)}</p>`
+    : "";
+  return `${note}<div class="project-grid">${list
     .map(
-      (proj) => `<article class="project-card reveal">
-        <div class="project-card-media" style="background-image:url('../assets/images/${proj.thumb || "hero-construction.jpg"}')"></div>
+      (proj) => `<article class="project-card reveal${proj.placeholder ? " is-placeholder" : ""}">
+        <div class="project-card-media" style="background-image:url('../assets/images/${proj.thumb || "hero-construction.jpg"}')">
+          ${
+            proj.category
+              ? `<span class="project-card-tag">${escapeHtml(proj.category)}</span>`
+              : ""
+          }
+          ${
+            proj.placeholder
+              ? `<span class="project-card-placeholder">${lang === "fr" ? "Visuel illustratif" : "Illustrative"}</span>`
+              : ""
+          }
+        </div>
         <div class="project-card-body">
           <h3>${escapeHtml(proj.title)}</h3>
+          ${proj.location ? `<p class="project-card-loc">${escapeHtml(proj.location)}</p>` : ""}
           <p>${escapeHtml(proj.summary || "")}</p>
         </div>
       </article>`
@@ -202,7 +303,47 @@ function renderProjects(lang, limit) {
     .join("")}</div>`;
 }
 
-function injectBlocks(content, lang, slug) {
+function renderStats(lang) {
+  const items =
+    lang === "fr"
+      ? [
+          ["+50", "Projets réalisés"],
+          ["10+", "Années d’expérience"],
+          ["100%", "Engagés pour la qualité"],
+          ["", "Particuliers & professionnels"],
+        ]
+      : [
+          ["+50", "Projects delivered"],
+          ["10+", "Years of experience"],
+          ["100%", "Committed to quality"],
+          ["", "Individuals & businesses"],
+        ];
+  return `<div class="stats-bar" role="list">
+    ${items
+      .map(
+        ([value, label]) => `<div class="stats-bar-item reveal" role="listitem">
+          ${value ? `<strong>${escapeHtml(value)}</strong>` : ""}
+          <span>${escapeHtml(label)}</span>
+        </div>`
+      )
+      .join("")}
+  </div>`;
+}
+
+function renderBreadcrumbs(lang, crumbs) {
+  const home = lang === "fr" ? "Accueil" : "Home";
+  const parts = [`<a href="index.html">${home}</a>`];
+  crumbs.forEach((c, i) => {
+    if (i === crumbs.length - 1) {
+      parts.push(`<span aria-current="page">${escapeHtml(c.label)}</span>`);
+    } else if (c.href) {
+      parts.push(`<a href="${c.href}">${escapeHtml(c.label)}</a>`);
+    }
+  });
+  return `<nav class="breadcrumbs container" aria-label="${lang === "fr" ? "Fil d'Ariane" : "Breadcrumb"}">${parts.join('<span class="bc-sep" aria-hidden="true">/</span>')}</nav>`;
+}
+
+function injectBlocks(content, lang, slug, meta) {
   let out = content;
   if (out.includes("<!-- @products -->")) {
     out = out.replace("<!-- @products -->", renderProducts(lang, site.whatsapp));
@@ -211,10 +352,18 @@ function injectBlocks(content, lang, slug) {
     out = out.replace("<!-- @product-options -->", renderProductOptions(lang));
   }
   if (out.includes("<!-- @projects-home -->")) {
-    out = out.replace("<!-- @projects-home -->", renderProjects(lang, 3));
+    out = out.replace("<!-- @projects-home -->", renderProjects(lang, 4));
   }
   if (out.includes("<!-- @projects-full -->")) {
     out = out.replace("<!-- @projects-full -->", renderProjects(lang));
+  }
+  if (out.includes("<!-- @stats -->")) {
+    out = out.replace("<!-- @stats -->", renderStats(lang));
+  }
+  const bcMatch = out.match(/<!-- @breadcrumbs:([^>]*) -->/);
+  if (bcMatch) {
+    const label = bcMatch[1].trim();
+    out = out.replace(bcMatch[0], renderBreadcrumbs(lang, [{ label }]));
   }
   return out;
 }
@@ -224,7 +373,7 @@ function renderPage(lang, pageDef) {
   const nav = JSON.parse(read(path.join(ROOT, `data/nav.${lang}.json`)));
   const contentPath = path.join(ROOT, "src/pages", lang, pageDef.slug.replace(/\.html$/, "") + ".html");
   let content = read(contentPath);
-  content = injectBlocks(content, lang, pageDef.slug);
+  content = injectBlocks(content, lang, pageDef.slug, meta);
 
   const { header, footer } = renderHeader(lang, meta, nav);
   const canonical = `${site.domain}/${lang}/${pageDef.slug === "index.html" ? "" : pageDef.slug}`.replace(/\/$/, "/");
@@ -317,26 +466,32 @@ function buildRedirects() {
 `;
 }
 
-// Clean dist
-fs.rmSync(DIST, { recursive: true, force: true });
-fs.mkdirSync(DIST, { recursive: true });
+/** Publish root: committed fr/ + en/ for Netlify (no CI build). dist/ optional for preview. */
+const sitemap = buildSitemap();
+const redirects = buildRedirects();
 
-for (const dir of ["css", "js", "assets", "data"]) {
-  copyDir(path.join(ROOT, dir), path.join(DIST, dir));
-}
-
-for (const file of ["index.html", "404.html", "robots.txt"]) {
-  fs.copyFileSync(path.join(ROOT, file), path.join(DIST, file));
-}
-
-write(path.join(DIST, "sitemap.xml"), buildSitemap());
-write(path.join(DIST, "_redirects"), buildRedirects());
+write(path.join(ROOT, "sitemap.xml"), sitemap);
+write(path.join(ROOT, "_redirects"), redirects);
 
 for (const page of manifest) {
   for (const lang of ["fr", "en"]) {
     const html = renderPage(lang, page);
-    write(path.join(DIST, lang, page.slug), html);
+    write(path.join(ROOT, lang, page.slug), html);
   }
 }
 
-console.log(`Built ${manifest.length * 2} pages → ${DIST}`);
+if (process.env.UPUW_DIST === "1") {
+  fs.rmSync(DIST, { recursive: true, force: true });
+  fs.mkdirSync(DIST, { recursive: true });
+  for (const dir of ["css", "js", "assets", "data", "fr", "en", "docs"]) {
+    const src = path.join(ROOT, dir);
+    if (fs.existsSync(src)) copyDir(src, path.join(DIST, dir));
+  }
+  for (const file of ["index.html", "404.html", "robots.txt", "sitemap.xml", "_redirects"]) {
+    const src = path.join(ROOT, file);
+    if (fs.existsSync(src)) fs.copyFileSync(src, path.join(DIST, file));
+  }
+  console.log(`Optional mirror → ${DIST}`);
+}
+
+console.log(`Built ${manifest.length * 2} pages → ${path.join(ROOT, "fr|en")} (publish root)`);

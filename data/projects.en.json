@@ -1,4 +1,42 @@
 {
   "emptyMessage": "Portfolio coming soon — project photos and case studies to be supplied by the client.",
-  "projects": []
+  "placeholderNote": "Illustrative visuals (stock photos from the repo) — replace with verified client projects.",
+  "projects": [
+    {
+      "id": "residence-r1",
+      "title": "Residential home R+1",
+      "summary": "Residential program — client case study to be completed.",
+      "location": "Yaoundé, Cameroon",
+      "thumb": "about-architecture.jpg",
+      "category": "Residential",
+      "placeholder": true
+    },
+    {
+      "id": "voirie",
+      "title": "Roadway upgrade",
+      "summary": "Public works — illustrative visual pending client validation.",
+      "location": "Yaoundé, Cameroon",
+      "thumb": "hero-construction.jpg",
+      "category": "Public works",
+      "placeholder": true
+    },
+    {
+      "id": "chantier-cadre",
+      "title": "Active construction site",
+      "summary": "Structural work — internal reference photo, not a certified deliverable.",
+      "location": "Capital region",
+      "thumb": "about-hero-planning.jpg",
+      "category": "Construction",
+      "placeholder": true
+    },
+    {
+      "id": "topo-drone",
+      "title": "Drone topographic survey",
+      "summary": "Surveys & geomatics — UPUW equipment illustration.",
+      "location": "Yaoundé, Cameroon",
+      "thumb": "product-drone.jpg",
+      "category": "Surveys",
+      "placeholder": true
+    }
+  ]
 }
